@@ -555,10 +555,18 @@
         }
 
         @media (max-width: 768px) {
-            .nav-menu { gap: 15px; }
-            .nav-menu a { font-size: 14px; }
-            .logo { font-size: 18px; }
+            .header-container { flex-wrap: nowrap; gap: 12px; }
+            .logo { font-size: 18px; flex-shrink: 0; }
             .logo i { font-size: 22px; }
+            .nav-menu {
+                gap: 12px;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                white-space: nowrap;
+            }
+            .nav-menu li { flex: 0 0 auto; }
+            .nav-menu a { font-size: 14px; }
             .appointment-container { grid-template-columns: 1fr; }
             .diagnostics-features { grid-template-columns: repeat(2, 1fr); }
         }
@@ -824,7 +832,7 @@
                 
                 <div class="hero-stats">
                     <div class="stat-item">
-                        <span class="stat-number">10+</span>
+                        <span class="stat-number">15+</span>
                         <span class="stat-text">років досвіду</span>
                     </div>
                     <div class="stat-item">
@@ -904,8 +912,8 @@
                     <div class="award-icon">
                         <i class="fas fa-star"></i>
                     </div>
-                    <h3>Нагороджений орденом</h3>
-                    <p>Медична слава України</p>
+                    <h3>нагороджений орденом</h3>
+                    <p>медична слава України</p>
                 </div>
             </div>
         </div>
@@ -1269,5 +1277,4 @@
         });
     </script>
 </body>
-
 </html>
