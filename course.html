@@ -458,47 +458,46 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        /* Tariffs Section */
         .tariffs-section {
-            padding: 80px 0;
-            background: transparent;
-            position: relative;
-        }
+    background: white;
+    border-radius: 40px;
+    margin: 40px 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        0 20px 40px rgba(0, 87, 183, 0.1),
+        0 5px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 87, 183, 0.1);
+}
 
-        .tariffs-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(to right, 
-                transparent, 
-                var(--glass-border), 
-                transparent);
-        }
+.tariffs-section {
+    background: linear-gradient(135deg, 
+        #e6f2ff 0%, 
+        #f0f7ff 25%, 
+        #ffffff 50%, 
+        #f5faff 75%, 
+        #e9f5ff 100%);
+    border-radius: 40px;
+    margin: 40px 20px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(0, 87, 183, 0.1);
+}
 
-        .section-title {
-            text-align: center;
-            font-size: 36px;
-            margin-bottom: 50px;
-            color: var(--primary-color);
-            position: relative;
-            padding-bottom: 20px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 5px;
-            background: linear-gradient(to right, var(--accent-color), var(--medical-green));
-            border-radius: 3px;
-            box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
-        }
+.tariffs-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, 
+        #0057b7 0%, 
+        #1e6cd4 25%, 
+        #2ecc71 50%, 
+        #ffd700 75%, 
+        #1abc9c 100%);
+}
 
         /* 4 тарифа в 2 столбика */
         .tariffs-grid {
