@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Відгуки пацієнтів | Програма корекції постави</title>
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2a5c8f;
+            --secondary-color: #4a8bc2;
+            --accent-color: #3bb77e;
+            --light-color: #f0f7ff;
+            --text-color: #333;
+            --light-text: #666;
+            --border-radius: 12px;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+            /* Цвета из index.html */
+            --medical-green: #2ecc71;
+            --medical-teal: #1abc9c;
+            --glass-bg: rgba(255, 255, 255, 0.92);
+            --glass-border: rgba(255, 255, 255, 0.25);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-color);
+            background-color: #f9fbfd;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ТОЧНО ТАКОЕ ЖЕ МЕНЮ КАК В INDEX.HTML */
+        :root {
+            --primary-color: #0057b7;
+            --secondary-color: #1e6cd4;
+            --accent-color: #ffd700;
+            --medical-green: #2ecc71;
+            --medical-teal: #1abc9c;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --text-color: #333;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+            --glass-bg: rgba(255, 255, 255, 0.92);
+            --glass-border: rgba(255, 255, 255, 0.25);
+            --medical-blue: #e6f2ff;
+            --medical-light: #f8fcff;
+        }
+
+        .main-header {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px) saturate(180%);
+            -webkit-backdrop-filter: blur(15px) saturate(180%);
+            color: var(--primary-color);
+            padding: 12px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 8px 32px rgba(0, 87, 183, 0.15);
+            border-bottom: 1px solid var(--glass-border);
+            transition: var(--transition);
+        }
+
+        .header-hidden {
+            transform: translateY(-100%);
+        }
+
+        .header-visible {
+            transform: translateY(0);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            text-decoration: none;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .logo i {
+            color: var(--medical-teal);
+            font-size: 26px;
+            background: linear-gradient(135deg, var(--primary-color), var(--medical-teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: var(--transition);
+            position: relative;
+            padding: 8px 0;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-menu a:hover {
+            color: var(--medical-teal);
+        }
+
+        .nav-menu a.active {
+            color: var(--accent-color);
+        }
+
+        .header-decoration {
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, 
+                var(--primary-color) 0%, 
+                var(--medical-teal) 25%, 
+                var(--accent-color) 50%, 
+                var(--medical-green) 75%, 
+                var(--secondary-color) 100%);
+            opacity: 0.7;
+        }
+        
+        /* Отступ для контента под фиксированным меню */
+        .page-header {
+            padding-top: 100px;
+        }
+        
+        /* Header Styles */
+        .page-header-content {
+            background: linear-gradient(135deg, #2a5c8f 0%, #4a8bc2 100%);
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+            border-radius: 0 0 30px 30px;
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header-content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        
+        .header-inner {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .page-header-content h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .page-header-content p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 25px;
+            opacity: 0.9;
+        }
+        
+        .stats-box {
+            display: inline-flex;
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 15px 30px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            margin-top: 15px;
+        }
+        
+        .stat {
+            margin: 0 20px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .stat-text {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* Back Button */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+        }
+        
+        .back-button:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .back-button i {
+            margin-right: 8px;
+        }
+        
+        /* Reviews Section */
+        .reviews-intro {
+            text-align: center;
+            margin-bottom: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .reviews-intro h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .reviews-intro p {
+            font-size: 1.2rem;
+            color: var(--light-text);
+        }
+        
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 70px;
+        }
+        
+        .review-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border-top: 5px solid var(--accent-color);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .review-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .review-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .patient-age {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .review-body {
+            padding: 20px 25px;
+            flex-grow: 1;
+        }
+        
+        .comparison-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 15px 0 20px;
+            border: 1px solid #eee;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            display: block;
+        }
+        
+        .comparison-label {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+            font-weight: 700;
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+        
+        .review-text {
+            color: var(--light-text);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .review-meta {
+            display: flex;
+            align-items: center;
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px dashed #eee;
+        }
+        
+        .duration {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--light-color);
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .duration i {
+            margin-right: 8px;
+            color: var(--secondary-color);
+        }
+        
+        /* Testimonial Highlight */
+        .testimonial-highlight {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-bottom: 50px;
+            border-left: 5px solid var(--accent-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-highlight i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-right: 25px;
+        }
+        
+        .testimonial-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--text-color);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 50px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .cta-section h2 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary-color);
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cta-button:hover {
+            background-color: var(--accent-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            border-radius: 30px 30px 0 0;
+        }
+        
+        .footer p {
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+        
+        .footer a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .contact-info {
+            margin-top: 20px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .nav-menu {
+                gap: 15px;
+            }
+            
+            .nav-menu a {
+                font-size: 14px;
+            }
+            
+            .logo {
+                font-size: 18px;
+            }
+            
+            .logo i {
+                font-size: 22px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-header-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .stats-box {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-highlight {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .testimonial-highlight i {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .cta-section {
+                padding: 30px 20px;
+            }
+            
+            .comparison-image {
+                height: 200px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-header-content {
+                padding: 80px 0 40px;
+            }
+            
+            .page-header-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .review-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .comparison-image {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ТОЧНО ТАКОЕ ЖЕ МЕНЮ КАК В INDEX.HTML -->
+    <header class="main-header header-visible" id="mainHeader">
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-hands-helping"></i>
+                <span>БЕРЕГИНЯ</span>
+            </div>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Іван Газін</a></li>
+                    <li><a href="course.html">Онлайн-курс</a></li>
+
+                </ul>
+            </nav>
+        </div>
+    </header>
+  
+        <header class="page-header-content">
+            <div class="container">
+                <div class="header-inner">
+                    <h1><i class="fas fa-star"></i> Відгуки наших пацієнтів</h1>
+                    <p>Реальні результати лікування сколіозу, вальгусу, плоскостопості та порушень постави</p>
+                    
+                    
+                    <div class="stats-box">
+                        <div class="stat">
+                            <span class="stat-number">99%</span>
+                            <span class="stat-text">позитивна динаміка</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">3000+</span>
+                            <span class="stat-text">пацієнтів на рік</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">95%</span>
+                            <span class="stat-text">рекомендують нас</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </section>
+    
+    <main class="container">
+        <!-- Reviews Intro -->
+        <section class="reviews-intro">
+            <h2>Наші відгуки</h2>
+            <p>Нашу програму проходять <strong>понад 3000 пацієнтів на рік</strong>, у яких у <strong>99%</strong> спостерігається позитивна динаміка вже на базовому курсі. Результати говорять самі за себе.</p>
+        </section>
+        
+        <!-- Highlighted Testimonial -->
+        <div class="testimonial-highlight">
+            <i class="fas fa-quote-left"></i>
+            <p class="testimonial-text">"Добрий вечер. Дуже хороший результат. Продовжуємо". Це лише один з багатьох відгуків наших задоволених пацієнтів, які відчули покращення вже за перші місяці лікування.</p>
+        </div>
+        
+        <!-- Reviews Grid -->
+        <div class="reviews-grid">
+            <!-- Review 1 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <h3 class="review-title">Лікування сколіозу 2 ст. та вальгусу</h3>
+                    <span class="patient-age">10 років</span>
+                </div>
+                <div class="review-body">
+                    <!-- ЗАМІНИТИ ПОСИЛАННЯ НА ВАШЕ ЗОБРАЖЕННЯ -->
+                    <img src="images/reviews/29.png" alt="Результати лікування сколіозу 2 ст. та вальгусу" class="comparison-image" loading="lazy">
+                    <div class="comparison-label">
+                        <span>ДО</span>
+                        <span>ПІСЛЯ</span>
+                    </div>
+                    <p class="review-text">Помітне покращення постави та корекція вальгусної деформації.</p>
+                    <div class="review-meta">
+                        <span class="duration"><i class="far fa-calendar-alt"></i> 6 місяців курсу</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Review 2 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <h3 class="review-title">Виправлення вальгусу та постави</h3>
+                    <span class="patient-age">13 років</span>
+                </div>
+                <div class="review-body">
+                    <!-- ЗАМІНИТИ ПОСИЛАННЯ НА ВАШЕ ЗОБРАЖЕННЯ -->
+                    <img src="images/reviews/28.png" alt="Результати виправлення вальгусу та постави" class="comparison-image" loading="lazy">
+                    <div class="comparison-label">
+                        <span>ДО</span>
+                        <span>ПІСЛЯ</span>
+                    </div>
+                    <p class="review-text">Повна корекція вальгусної деформації та значне покращення постави.</p>
+                    <div class="review-meta">
+                        <span class="duration"><i class="far fa-calendar-alt"></i> 3 місяці курсу</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Review 3 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <h3 class="review-title">Виправлення сколіотичної постави</h3>
+                    <span class="patient-age">3.5 роки</span>
+                </div>
+                <div class="review-body">
+                    <!-- ЗАМІНИТИ ПОСИЛАННЯ НА ВАШЕ ЗОБРАЖЕННЯ -->
+                    <img src="images/reviews/27.png" alt="Результати виправлення сколіотичної постави" class="comparison-image" loading="lazy">
+                    <div class="comparison-label">
+                        <span>ДО</span>
+                        <span>ПІСЛЯ</span>
+                    </div>
+                    <p class="review-text">Рання корекція постави у дошкільника з вираженим результатом.</p>
+                    <div class="review-meta">
+                        <span class="duration"><i class="far fa-calendar-alt"></i> 14 занять</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Review 4 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <h3 class="review-title">Виправлення постави</h3>
+                </div>
+                <div class="review-body">
+                    <!-- ЗАМІНИТИ ПОСИЛАННЯ НА ВАШЕ ЗОБРАЖЕННЯ -->
+                    <img src="images/reviews/13.png" alt="Результати виправлення постави" class="comparison-image" loading="lazy">
+                    <div class="comparison-label">
+                        <span>ДО</span>
+                        <span>ПІСЛЯ</span>
+                    </div>
+                    <p class="review-text">Значне покращення постави та загального м'язового тонусу.</p>
+                    <div class="review-meta">
+                        <span class="duration"><i class="far fa-calendar-alt"></i> 3 місяці курсу</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Review 5 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <h3 class="review-title">Лікування сколіозу та вальгусу</h3>
+                    <span class="patient-age">13 років</span>
+                </div>
+                <div class="review-body">
+                    <!-- ЗАМІНИТИ ПОСИЛАННЯ НА ВАШЕ ЗОБРАЖЕННЯ -->
+                    <img src="images/reviews/23.png " alt="Результати лікування сколіозу та вальгусу" class="comparison-image" loading="lazy">
+                    <div class="comparison-label">
+                        <span>ДО</span>
+                        <span>ПІСЛЯ</span>
+                    </div>
+                    <p class="review-text">Результати онлайн-курсу з корекцією за короткий термін.</p>
+                    <div class="review-meta">
+                        <span class="duration"><i class="far fa-calendar-alt"></i> 1.5 місяці курсу</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Review 6 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <h3 class="review-title">Виправлення вальгусу, плоскостопості та постави</h3>
+                </div>
+                <div class="review-body">
+                    <!-- ЗАМІНИТИ ПОСИЛАННЯ НА ВАШЕ ЗОБРАЖЕННЯ -->
+                    <img src="images/reviews/22.png " alt="Результати виправлення вальгусу, плоскостопості та постави" class="comparison-image" loading="lazy">
+                    <div class="comparison-label">
+                        <span>ДО</span>
+                        <span>ПІСЛЯ</span>
+                    </div>
+                    <p class="review-text">Комплексна корекція відразу кількох ортопедичних проблем.</p>
+                    <div class="review-meta">
+                        <span class="duration"><i class="far fa-calendar-alt"></i> 10 занять</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Review 7 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <h3 class="review-title">Сколіоз 3 ст. перевели у 2 ст. без корсета Шено</h3>
+                    <span class="patient-age">13 років</span>
+                </div>
+                <div class="review-body">
+                    <!-- ЗАМІНИТИ ПОСИЛАННЯ НА ВАШЕ ЗОБРАЖЕННЯ -->
+                    <img src="images/reviews/21.png" alt="Результати лікування сколіозу 3 ст." class="comparison-image" loading="lazy">
+                    <div class="comparison-label">
+                        <span>ДО</span>
+                        <span>ПІСЛЯ</span>
+                    </div>
+                    <p class="review-text">Зниження ступеня сколіозу без використання жорсткого корсета.</p>
+                    <div class="review-meta">
+                        <span class="duration"><i class="far fa-calendar-alt"></i> 6 місяців курсу</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Review 8 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <h3 class="review-title">Виправлення сколіотичної постави</h3>
+                </div>
+                <div class="review-body">
+                    <!-- ЗАМІНИТИ ПОСИЛАННЯ НА ВАШЕ ЗОБРАЖЕННЯ -->
+                    <img src="images/reviews/19.png" alt="Результати виправлення сколіотичної постави" class="comparison-image" loading="lazy">
+                    <div class="comparison-label">
+                        <span>ДО</span>
+                        <span>ПІСЛЯ</span>
+                    </div>
+                    <p class="review-text">Швидка корекція постави з помітним візуальним результатом.</p>
+                    <div class="review-meta">
+                        <span class="duration"><i class="far fa-calendar-alt"></i> 1 місяць курсу</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Review 9 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <h3 class="review-title">Виправлення вальгусу колін</h3>
+                    <span class="patient-age">5 років</span>
+                </div>
+                <div class="review-body">
+                    <!-- ЗАМІНИТИ ПОСИЛАННЯ НА ВАШЕ ЗОБРАЖЕННЯ -->
+                    <img src="images/reviews/18.png" alt="Результати виправлення вальгусу колін" class="comparison-image" loading="lazy">
+                    <div class="comparison-label">
+                        <span>ДО</span>
+                        <span>ПІСЛЯ</span>
+                    </div>
+                    <p class="review-text">Рання корекція вальгусної деформації колінних суглобів у дитини.</p>
+                </div>
+            </div>
+            
+            <!-- Review 10 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <h3 class="review-title">Виправлення сутулості та гіперлордозу попереку</h3>
+                </div>
+                <div class="review-body">
+                    <!-- ЗАМІНИТИ ПОСИЛАННЯ НА ВАШЕ ЗОБРАЖЕННЯ -->
+                    <img src="images/reviews/42.png" alt="Результати виправлення сутулості та гіперлордозу" class="comparison-image" loading="lazy">
+                    <div class="comparison-label">
+                        <span>ДО</span>
+                        <span>ПІСЛЯ</span>
+                    </div>
+                    <p class="review-text">Корекція двох поширених проблем постави у дорослих.</p>
+                    <div class="review-meta">
+                        <span class="duration"><i class="far fa-calendar-alt"></i> 10 занять</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Review 11 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <h3 class="review-title">Виправлення вальгусу</h3>
+                </div>
+                <div class="review-body">
+                    <!-- ЗАМІНИТИ ПОСИЛАННЯ НА ВАШЕ ЗОБРАЖЕННЯ -->
+                    <img src="images/reviews/16.png" alt="Результати виправлення вальгусу" class="comparison-image" loading="lazy">
+                    <div class="comparison-label">
+                        <span>ДО</span>
+                        <span>ПІСЛЯ</span>
+                    </div>
+                    <p class="review-text">Швидка корекція вальгусної деформації.</p>
+                    <div class="review-meta">
+                        <span class="duration"><i class="far fa-calendar-alt"></i> 1 місяць курсу</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Review 12 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <h3 class="review-title">Виправлення вальгусу стоп та колін</h3>
+                    <span class="patient-age">8 років</span>
+                </div>
+                <div class="review-body">
+                    <!-- ЗАМІНИТИ ПОСИЛАННЯ НА ВАШЕ ЗОБРАЖЕННЯ -->
+                    <img src="images/reviews/15.png" alt="Результати виправлення вальгусу стоп та колін" class="comparison-image" loading="lazy">
+                    <div class="comparison-label">
+                        <span>ДО</span>
+                        <span>ПІСЛЯ</span>
+                    </div>
+                    <p class="review-text">Комплексне виправлення деформацій нижніх кінцівок.</p>
+                </div>
+            </div>
+            
+            <!-- Review 13 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <h3 class="review-title">Результати учасників онлайн-групи</h3>
+                </div>
+                <div class="review-body">
+                    <!-- ЗАМІНИТИ ПОСИЛАННЯ НА ВАШЕ ЗОБРАЖЕННЯ -->
+                    <img src="images/reviews/31.png" alt="Результати учасників онлайн-групи" class="comparison-image" loading="lazy">
+                    <div class="comparison-label">
+                        <span>ДО</span>
+                        <span>ПІСЛЯ</span>
+                    </div>
+                    <p class="review-text">Колективні результати пацієнтів, які займаються в онлайн-форматі.</p>
+                    <div class="review-meta">
+                        <span class="duration"><i class="far fa-calendar-alt"></i> 2 місяці курсу</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Review 14 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <h3 class="review-title">Усунення сутулості</h3>
+                    <span class="patient-age">18 років</span>
+                </div>
+                <div class="review-body">
+                    <!-- ЗАМІНИТИ ПОСИЛАННЯ НА ВАШЕ ЗОБРАЖЕННЯ -->
+                    <img src="images/reviews/14.png" alt="Результати усунення сутулості" class="comparison-image" loading="lazy">
+                    <div class="comparison-label">
+                        <span>ДО</span>
+                        <span>ПІСЛЯ</span>
+                    </div>
+                    <p class="review-text">"Добрий вечер. Дуже хороший результат. Продовжуємо" — відгук пацієнта.</p>
+                    <div class="review-meta">
+                        <span class="duration"><i class="far fa-calendar-alt"></i> 3 місяці курсу</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2>Готові покращити свою поставу?</h2>
+            <p>Приєднуйтесь до понад 3000 пацієнтів, які вже відчули позитивні зміни завдяки нашій програмі корекції. Запишіться на безкоштовну консультацію сьогодні!</p>
+            <a href="course.html" class="cta-button">Записатися на консультацію</a>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2023 Програма корекції постави та лікування ортопедичних захворювань. Усі права захищено.</p>
+            <div class="contact-info">
+                <p>Телефон: <strong>+380 67 484 93 08</strong> | Email: <strong>naturalmedical96@gmail.com</strong></p>
+                <p>Соціальні мережі: 
+                    <a href="https://www.instagram.com/ivan_gazin/"><i class="fab fa-instagram"></i></a> 
+                    <a href="https://www.facebook.com/ivangazin19/"><i class="fab fa-facebook"></i></a> 
+                    <a href="https://t.me/ivangazin"><i class="fab fa-telegram"></i></a>
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // ТОЧНО ТАКОЙ ЖЕ СКРИПТ КАК В INDEX.HTML
+        let lastScrollTop = 0;
+        const header = document.getElementById('mainHeader');
+        
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // Прокрутка вниз - скрываем меню
+                header.classList.remove('header-visible');
+                header.classList.add('header-hidden');
+            } else {
+                // Прокрутка вверх - показываем меню
+                header.classList.remove('header-hidden');
+                header.classList.add('header-visible');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+
+        // Проста анімація при завантаженні сторінки
+        document.addEventListener('DOMContentLoaded', function() {
+            const reviewCards = document.querySelectorAll('.review-card');
+            
+            // Додаємо анімацію появи карток
+            reviewCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+    <!-- Кнопка "Назад на головну" внизу по центру -->
+<div class="fixed-back-button">
+    <a href="index.html" class="back-to-main-btn">
+        <i class="fas fa-arrow-left"></i> Назад на головну
+    </a>
+</div>
+</body>
+</html>
