@@ -461,6 +461,41 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
         
+        .home-to-index {
+            position: fixed;
+            left: 50%;
+            bottom: 20px;
+            transform: translateX(-50%);
+            z-index: 2000;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 26px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+            transition: var(--transition);
+        }
+
+        .home-to-index:hover {
+            transform: translateX(-50%) translateY(-2px);
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.22);
+            color: #fff;
+        }
+
+        @media (max-width: 480px) {
+            .home-to-index {
+                width: calc(100% - 40px);
+                max-width: 420px;
+                bottom: 16px;
+                padding: 14px 18px;
+            }
+        }
+        
         /* Footer */
         .footer {
             background-color: var(--primary-color);
@@ -562,7 +597,23 @@
     </style>
 </head>
 <body>
-   
+    <!-- ТОЧНО ТАКОЕ ЖЕ МЕНЮ КАК В INDEX.HTML -->
+    <header class="main-header header-visible" id="mainHeader">
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-hands-helping"></i>
+                <span>БЕРЕГИНЯ</span>
+            </div>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Іван Газін</a></li>
+                    <li><a href="course.html">Онлайн-курс</a></li>
+
+                </ul>
+            </nav>
+        </div>
+    </header>
   
         <header class="page-header-content">
             <div class="container">
@@ -877,14 +928,16 @@
         <section class="cta-section">
             <h2>Готові покращити свою поставу?</h2>
             <p>Приєднуйтесь до понад 3000 пацієнтів, які вже відчули позитивні зміни завдяки нашій програмі корекції. Запишіться на безкоштовну консультацію сьогодні!</p>
-            <a href="https://secure.wayforpay.com/button/b57ebd74e0e6b" class="cta-button">Записатися на консультацію</a>
+            <a href="reviews.html" class="cta-button">Записатися на консультацію</a>
         </section>
     </main>
     
+    <a href="index.html" class="home-to-index"><i class="fas fa-house"></i>На головну</a>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>© 2023 Програма корекції постави та лікування ортопедичних захворювань. Усі права захищено.</p>
+            <p> 2023 . Усі права захищено.</p>
             <div class="contact-info">
                 <p>Телефон: <strong>+380 67 484 93 08</strong> | Email: <strong>naturalmedical96@gmail.com</strong></p>
                 <p>Соціальні мережі: 
@@ -934,14 +987,5 @@
             });
         });
     </script>
-    <!-- Кнопка "Назад на головну" внизу по центру -->
-<div class="fixed-back-button">
-    <a href="index.html" class="back-to-main-btn">
-        <i class="fas fa-arrow-left"></i> Назад на головну
-    </a>
-</div>
 </body>
-
 </html>
-
-
