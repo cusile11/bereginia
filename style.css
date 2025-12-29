@@ -1054,96 +1054,50 @@ a {
     opacity: 1;
     transform: translateY(0);
 }
-/* Тарифы */
 .tariffs-section {
-    padding: 80px 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-}
-
-.tariffs-section .section-title {
-    color: white;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.tariffs-section .section-subtitle {
-    text-align: center;
-    margin-bottom: 60px;
-    font-size: 1.1rem;
-    opacity: 0.9;
-}
-
-.tariffs-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.tariff-card {
     background: white;
-    border-radius: 15px;
-    padding: 30px;
-    color: #333;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    position: relative;
-    transition: transform 0.3s ease;
-}
-
-.tariff-card:hover {
-    transform: translateY(-10px);
-}
-
-.tariff-card.popular {
-    border: 2px solid #667eea;
-}
-
-.popular-badge {
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #667eea;
-    color: white;
-    padding: 6px 20px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 600;
-}
-
-.tariff-header {
-    background: linear-gradient(135deg, 
-        #1abc9c 0%, 
-        #16a085 25%,
-        #2ecc71 50%,
-        #27ae60 75%,
-        #3498db 100%);
-    color: white;
-    padding: 25px;
-    text-align: center;
+    border-radius: 40px;
+    margin: 40px 20px;
     position: relative;
     overflow: hidden;
-    border: none !important;
-    background-image: none !important;
+    box-shadow: 
+        0 20px 40px rgba(0, 87, 183, 0.1),
+        0 5px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 87, 183, 0.1);
 }
 
-/* Удалите или закомментируйте эти блоки если они есть: */
-.tariff-header::before,
-.tariff-header::after {
-    /* content: ''; удалите если есть */
-    /* background: ... удалите если есть синие фоны */
+.tariffs-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, 
+        #0057b7, 
+        #1e6cd4, 
+        #ffd700);
 }
 
-/* Если есть какие-то вложенные селекторы */
-.tariffs-grid .tariff-card .tariff-header,
-.tariffs-section .tariff-header,
-[class*="tariff"] .tariff-header {
-    background: linear-gradient(135deg, #1abc9c, #16a085, #2ecc71) !important;
-}
+.tariffs-section::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border: 2px dashed rgba(0, 87, 183, 0.1);
+    border-radius: 20px;
+    pointer-events: none;
 }
 
+
+
+.tariff-header {
+    background: rgba(255, 255, 255, 0.7) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
 ..tariff-header {
     background: linear-gradient(135deg, 
         #1abc9c 0%, 
@@ -1167,13 +1121,11 @@ a {
     /* background: ... удалите если есть синие фоны */
 }
 
-/* Если есть какие-то вложенные селекторы */
-.tariffs-grid .tariff-card .tariff-header,
-.tariffs-section .tariff-header,
-[class*="tariff"] .tariff-header {
-    background: linear-gradient(135deg, #1abc9c, #16a085, #2ecc71) !important;
+.tariff-header {
+    background: rgba(255, 255, 255, 0.7) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
 }
-
 .price {
     font-size: 2.5rem;
     font-weight: 700;
@@ -2670,4 +2622,11 @@ a {
     .header-container .logo i {
         font-size: 22px !important;
     }
+}
+.pricing-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
 }
