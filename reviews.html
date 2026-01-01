@@ -590,50 +590,93 @@
                 gap: 10px;
             }
             
-            .comparison-image {
-                height: 180px;
+            .cta-button {
+                display: inline-block;
+                background-color: white;
+                color: var(--primary-color);
+                padding: 15px 40px;
+                border-radius: 50px;
+                font-weight: 700;
+                font-size: 1.1rem;
+                text-decoration: none;
+                transition: var(--transition);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .cta-button:hover {
+                background-color: var(--accent-color);
+                color: white;
+                transform: translateY(-3px);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            }
+            
+            .home-to-index {
+                position: fixed;
+                left: 50%;
+                bottom: 20px;
+                transform: translateX(-50%);
+                z-index: 2000;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                padding: 14px 26px;
+                border-radius: 999px;
+                background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+                color: #fff;
+                text-decoration: none;
+                font-weight: 700;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+                transition: var(--transition);
+            }
+
+            .home-to-index:hover {
+                transform: translateX(-50%) translateY(-2px);
+                box-shadow: 0 14px 40px rgba(0, 0, 0, 0.22);
+                color: #fff;
             }
         }
+        
+        /* Отступ для контента */
+        .page-header {
+            padding-top: 0;
+        }
+        
     </style>
 </head>
 <body>
-  
-
-                </ul>
-            </nav>
-        </div>
-    </header>
-  
-        <header class="page-header-content">
-            <div class="container">
-                <div class="header-inner">
-                    <h1><i class="fas fa-star"></i> Відгуки наших пацієнтів</h1>
-                    <p>Реальні результати лікування сколіозу, вальгусу, плоскостопості та порушень постави</p>
-                    
-                    
-                    <div class="stats-box">
-                        <div class="stat">
-                            <span class="stat-number">99%</span>
-                            <span class="stat-text">позитивна динаміка</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">3000+</span>
-                            <span class="stat-text">пацієнтів на рік</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">95%</span>
-                            <span class="stat-text">рекомендують нас</span>
-                        </div>
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-content">
+            <div class="header-inner">
+                <h1>Відгуки пацієнтів</h1>
+                <p>Реальні історії успішного лікування сколіозу, вальгусу та порушень постави</p>
+                
+                <div class="stats-box">
+                    <div class="stat">
+                        <span class="stat-number">99%</span>
+                        <span class="stat-text">позитивна динаміка</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">3000+</span>
+                        <span class="stat-text">пацієнтів на рік</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">95%</span>
+                        <span class="stat-text">рекомендують нас</span>
                     </div>
                 </div>
+                
             </div>
-        </header>
+        </div>
     </section>
     
     <main class="container">
         <!-- Reviews Intro -->
         <section class="reviews-intro">
             <h2>Наші відгуки</h2>
+            <p>Реальні результати лікування сколіозу, вальгусу, плоскостопості та порушень постави</p>
+            
             <p>Нашу програму проходять <strong>понад 3000 пацієнтів на рік</strong>, у яких у <strong>99%</strong> спостерігається позитивна динаміка вже на базовому курсі. Результати говорять самі за себе.</p>
         </section>
         
@@ -939,6 +982,133 @@
     </footer>
     
     <script>
+        // Бургер меню функциональность
+        const burgerMenu = document.getElementById('burgerMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMenu = document.getElementById('closeMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const langButtons = document.querySelectorAll('.lang-btn');
+        
+        function openMenu() {
+            burgerMenu.classList.add('active');
+            mobileMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeMenuFunc() {
+            burgerMenu.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        burgerMenu.addEventListener('click', openMenu);
+        closeMenu.addEventListener('click', closeMenuFunc);
+        menuOverlay.addEventListener('click', closeMenuFunc);
+        
+        // Закрытие меню при клике на ссылку
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', closeMenuFunc);
+        });
+        
+        // Переключатель языка с полной функциональностью
+        const translations = {
+            uk: {
+                // Навигация
+                navHome: 'Іван Газін',
+                navCourse: 'Онлайн-курс',
+                navReviews: 'Відгуки',
+                // Язык
+                langTitle: 'Мова / Язык',
+                langUk: 'Українська',
+                langRu: 'Русский'
+            },
+            ru: {
+                // Навигация
+                navHome: 'Иван Газин',
+                navCourse: 'Онлайн-курс',
+                navReviews: 'Отзывы',
+                // Язык
+                langTitle: 'Язык / Мова',
+                langUk: 'Украинский',
+                langRu: 'Русский'
+            }
+        };
+
+        function updateLanguage(lang) {
+            const t = translations[lang];
+            
+            // Обновляем навигацию в мобильном меню
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+            if (mobileNavLinks[0]) mobileNavLinks[0].textContent = t.navHome;
+            if (mobileNavLinks[1]) mobileNavLinks[1].textContent = t.navCourse;
+            if (mobileNavLinks[2]) mobileNavLinks[2].textContent = t.navReviews;
+            
+            // Обновляем заголовок переключателя языка
+            const langTitle = document.querySelector('.language-switcher h4');
+            if (langTitle) langTitle.textContent = t.langTitle;
+            
+            // Обновляем кнопки языка
+            const langButtons = document.querySelectorAll('.lang-btn');
+            if (langButtons[0]) {
+                langButtons[0].innerHTML = `<i class="fas fa-flag"></i> ${t.langUk}`;
+                langButtons[0].setAttribute('data-lang', 'uk');
+            }
+            if (langButtons[1]) {
+                langButtons[1].innerHTML = `<i class="fas fa-flag"></i> ${t.langRu}`;
+                langButtons[1].setAttribute('data-lang', 'ru');
+            }
+            
+            // Устанавливаем атрибут языка для документа
+            document.documentElement.lang = lang;
+            
+            // Сохраняем выбор в localStorage
+            localStorage.setItem('selectedLanguage', lang);
+        }
+
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation(); // Предотвращаем закрытие меню
+                
+                langButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                const lang = this.dataset.lang;
+                console.log('Выбран язык:', lang);
+                
+                // Анимация нажатия
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+                
+                // Обновляем язык на сайте
+                updateLanguage(lang);
+            });
+        });
+        
+        // Загружаем сохраненный язык при загрузке страницы
+        const savedLanguage = localStorage.getItem('selectedLanguage') || 'uk';
+        if (savedLanguage !== 'uk') {
+            updateLanguage(savedLanguage);
+            // Устанавливаем активную кнопку
+            langButtons.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.lang === savedLanguage) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+        
+        // Закрытие меню по ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                closeMenuFunc();
+            }
+        });
+        
         // ТОЧНО ТАКОЙ ЖЕ СКРИПТ КАК В INDEX.HTML
         let lastScrollTop = 0;
         const header = document.getElementById('mainHeader');
@@ -978,5 +1148,3 @@
     </script>
 </body>
 </html>
-
-

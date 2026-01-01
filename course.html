@@ -94,6 +94,14 @@
             transform: translateY(0);
         }
 
+        /* Скрываем логотип и бургер при открытом мобильном меню на мобильных устройствах */
+        @media (max-width: 768px) {
+            header.main-header.mobile-menu-open .logo,
+            header.main-header.mobile-menu-open .burger-menu {
+                display: none !important;
+            }
+        }
+
         .header-container {
             display: flex;
             justify-content: space-between;
@@ -111,6 +119,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             position: relative;
+            text-decoration: none;
         }
 
         .logo::after {
@@ -193,13 +202,13 @@
 
         /* Hero Section Course - Более насыщенный дизайн */
         .course-hero {
-            padding: 120px 0 80px;
+            padding: 80px 0 80px;
             background: linear-gradient(135deg, 
                 rgba(230, 242, 255, 0.95) 0%, 
                 rgba(255, 248, 230, 0.95) 50%,
                 rgba(235, 255, 245, 0.95) 100%);
             text-align: center;
-            margin-top: 70px;
+            margin-top: 0;
             position: relative;
             overflow: hidden;
             border-bottom-left-radius: 40px;
@@ -1158,14 +1167,516 @@
             }
         }
         
+        /* Бургер меню */
+        .burger-menu {
+            display: block;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .burger-icon {
+            width: 30px;
+            height: 25px;
+            position: relative;
+            transform: rotate(0deg);
+            transition: .5s ease-in-out;
+        }
+
+        .burger-icon span {
+            display: block;
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background: var(--primary-color);
+            border-radius: 9px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: .25s ease-in-out;
+        }
+
+        .burger-icon span:nth-child(1) {
+            top: 0px;
+        }
+
+        .burger-icon span:nth-child(2) {
+            top: 11px;
+        }
+
+        .burger-icon span:nth-child(3) {
+            top: 22px;
+        }
+
+        .burger-menu.active .burger-icon span:nth-child(1) {
+            top: 11px;
+            transform: rotate(135deg);
+        }
+
+        .burger-menu.active .burger-icon span:nth-child(2) {
+            opacity: 0;
+            left: -60px;
+        }
+
+        .burger-menu.active .burger-icon span:nth-child(3) {
+            top: 11px;
+            transform: rotate(-135deg);
+        }
+
+        /* Мобильное меню */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 400px;
+            height: 100vh;
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.98) 0%, 
+                rgba(248, 252, 255, 0.98) 100%);
+            backdrop-filter: blur(20px);
+            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1);
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid rgba(0, 87, 183, 0.1);
+            background: linear-gradient(135deg, 
+                var(--primary-color) 0%, 
+                var(--secondary-color) 100%);
+            color: white;
+        }
+
+        .mobile-menu-header .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 20px;
+            font-weight: 800;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .mobile-menu-header .logo i {
+            font-size: 28px;
+            color: var(--accent-color);
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+
+        .close-menu {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .close-menu:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .close-menu i {
+            font-size: 18px;
+            color: white;
+        }
+
+        .mobile-menu-content {
+            padding: 30px 25px;
+        }
+
+        .mobile-nav {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .mobile-nav li {
+            margin-bottom: 5px;
+        }
+
+        .mobile-nav a {
+            display: block;
+            padding: 15px 20px;
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mobile-nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(0, 87, 183, 0.1), 
+                transparent);
+            transition: left 0.5s ease;
+        }
+
+        .mobile-nav a:hover::before {
+            left: 100%;
+        }
+
+        .mobile-nav a:hover {
+            background: rgba(0, 87, 183, 0.05);
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .mobile-nav a.active {
+            background: linear-gradient(135deg, 
+                var(--primary-color) 0%, 
+                var(--secondary-color) 100%);
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 87, 183, 0.2);
+        }
+
+        /* Переключатель языка */
+        /* Медицинский переключатель языка */
+.language-switcher {
+    margin-bottom: 40px;
+    padding: 30px;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.95) 0%, 
+        rgba(248, 252, 255, 0.95) 100%);
+    border-radius: 20px;
+    border: 2px solid rgba(0, 123, 255, 0.15);
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 8px 32px rgba(0, 123, 255, 0.12);
+    backdrop-filter: blur(10px);
+}
+
+.language-switcher::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        #007bff 0%, 
+        #0056b3 100%);
+    border-radius: 18px;
+    opacity: 0.05;
+    z-index: -1;
+}
+
+.language-switcher h4 {
+    margin-bottom: 25px;
+    color: #007bff;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.language-switcher h4::before {
+    content: '⚕';
+    font-size: 20px;
+    color: var(--medical-green);
+    margin-right: 8px;
+}
+
+.language-switcher h4::after {
+    content: '⚕';
+    font-size: 20px;
+    color: var(--medical-green);
+    margin-left: 8px;
+}
+
+.language-buttons {
+    display: flex;
+    gap: 15px;
+    max-width: 280px;
+    margin: 0 auto;
+}
+
+.lang-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 18px 20px;
+    border: 2px solid rgba(0, 123, 255, 0.3);
+    background: linear-gradient(135deg, 
+        rgba(0, 123, 255, 0.1) 0%, 
+        rgba(0, 123, 255, 0.05) 100%);
+    border-radius: 15px;
+    color: #007bff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.15);
+}
+
+.lang-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        #007bff 0%, 
+        #0056b3 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+}
+
+.lang-btn i {
+    font-size: 20px;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease;
+    color: #007bff;
+}
+
+.lang-btn span {
+    position: relative;
+    z-index: 1;
+    font-weight: 600;
+}
+
+.lang-btn:hover {
+    border-color: #007bff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.25);
+}
+
+.lang-btn:hover i {
+    transform: scale(1.1);
+}
+
+.lang-btn.active {
+    border-color: #007bff;
+    color: white;
+    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.35);
+    transform: translateY(-2px);
+}
+
+.lang-btn.active::before {
+    opacity: 1;
+}
+
+.lang-btn.active i {
+    color: white;
+    transform: scale(1.1);
+}
+
+.lang-btn.active span {
+    color: white;
+}
+
+        /* Мобильное меню футер */
+        .mobile-menu-footer {
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 87, 183, 0.1);
+        }
+
+        .contact-info {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: rgba(0, 87, 183, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 87, 183, 0.1);
+        }
+
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: var(--text-color);
+            font-size: 15px;
+            font-weight: 600;
+            padding: 8px 0;
+        }
+
+        .contact-info i {
+            color: var(--primary-color);
+            width: 20px;
+            text-align: center;
+            font-size: 18px;
+            background: rgba(0, 87, 183, 0.1);
+            padding: 8px;
+            border-radius: 8px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 87, 183, 0.1);
+            border-radius: 50%;
+            color: var(--primary-color);
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Оверлей */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .burger-menu {
+                display: block;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .mobile-menu {
+                max-width: 100%;
+                height: 100vh;
+                overflow-y: auto;
+                border-radius: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu {
+                max-width: 100%;
+            }
+            
+            .mobile-menu-content {
+                padding: 20px 20px;
+            }
+            
+            .language-switcher {
+                padding: 20px;
+            }
+            
+            .mobile-nav a {
+                padding: 12px 15px;
+                font-size: 15px;
+            }
+        }
+        
+        /* Отступ для контента под фиксированным меню */
+        .course-hero {
+            padding-top: 80px;
+        }
+        
+        /* Стили для мобильного меню */
+        .mobile-menu-header {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            padding: 20px !important;
+            border-bottom: 1px solid rgba(0, 87, 183, 0.1) !important;
+            background: linear-gradient(135deg, #0057b7 0%, #28a745 100%) !important;
+            color: white !important;
+        }
+        
+        .mobile-menu-logo {
+            display: flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+            font-size: 18px !important;
+            font-weight: 700 !important;
+            color: white !important;
+        }
+        
+        .mobile-menu-logo i {
+            font-size: 20px !important;
+        }
+        
+        .close-menu {
+            cursor: pointer !important;
+            padding: 10px !important;
+            border-radius: 50% !important;
+            transition: all 0.3s ease !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+        
+        .close-menu:hover {
+            background: rgba(255, 255, 255, 0.1) !important;
+            transform: scale(1.1) !important;
+        }
+        
+        .close-menu i {
+            font-size: 18px !important;
+        }
+        
+        /* Скрытие логотипа и бургер-иконки при открытом мобильном меню на телефонах */
+        @media (max-width: 768px) {
+            .mobile-menu.active ~ .menu-overlay.active ~ .main-header .logo,
+            .mobile-menu.active ~ .menu-overlay.active ~ .main-header .burger-menu {
+                display: none !important;
+            }
+        }
+        
     </style>
-    
 </head>
 
-
-
-    <!-- Header -->
-   <header class="main-header header-visible" id="mainHeader">
+<!-- Header с бургер меню -->
+<header class="main-header header-visible" id="mainHeader">
     <div class="container header-container">
         <div class="logo">
             <i class="fas fa-hands-helping"></i>
@@ -1173,23 +1684,79 @@
         </div>
         
         <nav>
-            <ul class="nav-menu">
-                <li><a href="/">Іван Газін</a></li>
-                <li><a href="/course" class="active">Онлайн-курс</a></li>
+            <ul class="nav-menu" style="display: none;">
+                <li><a href="index.html">Іван Газін</a></li>
+                <li><a href="course.html" class="active">Онлайн-курс</a></li>
             </ul>
         </nav>
+        
+        <!-- Бургер меню -->
+        <div class="burger-menu" id="burgerMenu">
+            <div class="burger-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
     </div>
+    
+    <!-- Мобильное меню -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <div class="mobile-menu-logo">
+                <i class="fas fa-hands-helping"></i>
+                <span>БЕРЕГИНЯ</span>
+            </div>
+            <div class="close-menu" id="closeMenu">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        
+        <div class="mobile-menu-content">
+            <ul class="mobile-nav">
+                <li><a href="index.html">Іван Газін</a></li>
+                <li><a href="course.html" class="active">Онлайн-курс</a></li>
+            </ul>
+            
+            <!-- Переключатель языка -->
+            <div class="language-buttons">
+                <button class="lang-btn active" data-lang="uk">
+                    <i class="fas fa-flag"></i>
+                    <span>Українська</span>
+                </button>
+                <button class="lang-btn" data-lang="ru">
+                    <i class="fas fa-flag"></i>
+                    <span>Русский</span>
+                </button>
+            </div>
+            
+            <!-- Дополнительные ссылки -->
+            <div class="mobile-menu-footer">
+                <div class="contact-info">
+                    <p><i class="fas fa-phone"></i> +380 67 484 93 08</p>
+                    <p><i class="fas fa-envelope"></i> naturalmedical96@gmail.com</p>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/ivan_gazin/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/ivangazin19/"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Оверлей для меню -->
+    <div class="menu-overlay" id="menuOverlay"></div>
 </header>
 
     <!-- Course Hero -->
     <section class="course-hero">
         <div class="container">
-            <h1>«Вальгус + постава, сколіоз»</h1>
-            <h2>Онлайн-курс корекції</h2>
-            <p class="course-description">
+            <h1 data-translate="course-title">«Вальгус + постава, сколіоз»</h1>
+            <h2 data-translate="course-subtitle">Онлайн-курс корекції</h2>
+            <p class="course-description" data-translate="course-description">
                 Вилікуйте порушення постави та ніжок у вашої дитини без операції за допомогою революційних методик! Наша методика поєднує німецькі технології та власні розробки для максимальної ефективності.
             </p>
-            <p class="course-benefit">
+            <p class="course-benefit" data-translate="course-benefit">
                 <i class="fas fa-star medical-icon"></i>
                 Займайтеся у зручний для вас час з максимальною ефективністю під повним контролем професіонала!
             </p>
@@ -1198,19 +1765,19 @@
             <div class="success-stats">
                 <div class="stat-item">
                     <span class="stat-number">98%</span>
-                    <span class="stat-text">Успішних результатів</span>
+                    <span class="stat-text" data-translate="course-stat-success">Успішних результатів</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number">1500+</span>
-                    <span class="stat-text">Вилікуваних дітей</span>
+                    <span class="stat-text" data-translate="course-stat-children">Вилікуваних дітей</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number">12</span>
-                    <span class="stat-text">Років досвіду</span>
+                    <span class="stat-text" data-translate="course-stat-years">Років досвіду</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number">24/7</span>
-                    <span class="stat-text">Підтримка</span>
+                    <span class="stat-text" data-translate="course-stat-support">Підтримка</span>
                 </div>
             </div>
         </div>
@@ -1222,7 +1789,7 @@
             <div class="info-content">
                 <p>
                     <span class="medical-icon-circle">✓</span>
-                    Метод корекції сколіозу за німецькою методикою Катаріни Шрот є золотим стандартом лікування без операції та зробив прорив у лікуванні сколіозу!
+                    <span data-translate="course-info-1">Метод корекції сколіозу за німецькою методикою Катаріни Шрот є золотим стандартом лікування без операції та зробив прорив у лікуванні сколіозу!</span>
                 </p>
                 <div class="ornamental-divider">
                     <div class="divider-line"></div>
@@ -1231,7 +1798,7 @@
                 </div>
                 <p>
                     <span class="medical-icon-circle">✓</span>
-                    Корегуємо дисплазію сполучної тканини, яка призводить до вальгусу та сколіозу, працюючи з дефіцитними станами. Наш підхід враховує індивідуальні особливості кожної дитини.
+                    <span data-translate="course-info-2">Корегуємо дисплазію сполучної тканини, яка призводить до вальгусу та сколіозу, працюючи з дефіцитними станами. Наш підхід враховує індивідуальні особливості кожної дитини.</span>
                 </p>
                 <div class="ornamental-divider">
                     <div class="divider-line"></div>
@@ -1240,7 +1807,7 @@
                 </div>
                 <p>
                     <span class="medical-icon-circle">✓</span>
-                    Ми коригуємо сколіоз 3 ст. всього за 1 год на день навіть без корсета Шено, в якому дитині довелося б ходити по 20 годин на добу. Це революція у лікуванні сколиозу!
+                    <span data-translate="course-info-3">Ми коригуємо сколіоз 3 ст. всього за 1 год на день навіть без корсета Шено, в якому дитині довелося б ходити по 20 годин на добу. Це революція у лікуванні сколиозу!</span>
                 </p>
             </div>
         </div>
@@ -1249,159 +1816,159 @@
     <!-- Tariffs Section - 4 тарифа в 2 столбика -->
     <section class="tariffs-section">
         <div class="container">
-            <h2 class="section-title">Тарифи курсу</h2>
+            <h2 class="section-title" data-translate="tariffs-title">Тарифи курсу</h2>
             
             <div class="tariffs-grid">
                 <!-- Тариф 1 -->
                 <div class="tariff-card">
                     <div class="tariff-header">
-                        <h3 class="tariff-title">Індивідуальний Стандарт</h3>
+                        <h3 class="tariff-title" data-translate="tariff-1-title">Індивідуальний Стандарт</h3>
                         <div class="tariff-price">14 900</div>
                         <div class="tariff-old-price">18 900 ₴</div>
                     </div>
                     <div class="tariff-content">
                         <ul class="tariff-features">
-                            <li><i class="fas fa-check"></i> Доступ 5    місяців</li>
-                            <li><i class="fas fa-check"></i> Кураторство терапевта 3 місяці</li>
-                            <li><i class="fas fa-check"></i> Онлайн-заняття 2-3 рази на тиждень (12 занять)</li>
-                            <li><i class="fas fa-check"></i> Первинна консультація Газин І. В.</li>
-                            <li><i class="fas fa-check"></i> Індивідуальний план терапії</li>
-                            <li><i class="fas fa-check"></i> Техніки тейпування, масажу</li>
-                            <li><i class="fas fa-check"></i> Повторна діагностика через 3 місяці</li>
+                            <li><i class="fas fa-check"></i> <span data-translate="tariff-1-feature-1">Доступ 5 місяців</span></li>
+                            <li><i class="fas fa-check"></i> <span data-translate="tariff-1-feature-2">Кураторство терапевта 3 місяці</span></li>
+                            <li><i class="fas fa-check"></i> <span data-translate="tariff-1-feature-3">Онлайн-заняття 2-3 рази на тиждень (12 занять)</span></li>
+                            <li><i class="fas fa-check"></i> <span data-translate="tariff-1-feature-4">Первинна консультація Газин І. В.</span></li>
+                            <li><i class="fas fa-check"></i> <span data-translate="tariff-1-feature-5">Індивідуальний план терапії</span></li>
+                            <li><i class="fas fa-check"></i> <span data-translate="tariff-1-feature-6">Техніки тейпування, масажу</span></li>
+                            <li><i class="fas fa-check"></i> <span data-translate="tariff-1-feature-7">Повторна діагностика через 3 місяці</span></li>
                         </ul>
-                        <a href="https://secure.wayforpay.com/button/b9a2e30740578" class="buy-btn">Придбати курс</a>
+                        <a href="https://secure.wayforpay.com/button/b9a2e30740578" class="buy-btn" data-translate="buy-btn">Придбати курс</a>
                     </div>
                 </div>
 
                 <!-- Тариф 2 -->
                 <div class="tariff-card highlight">
                     <div class="tariff-header">
-                        <h3 class="tariff-title">Індивідуальний Преміум</h3>
+                        <h3 class="tariff-title" data-translate="tariff-2-title">Індивідуальний Преміум</h3>
                         <div class="tariff-price">17 900</div>
                         <div class="tariff-old-price">22 900 ₴</div>
                     </div>
                     <div class="tariff-content">
                         <ul class="tariff-features">
-                            <li><i class="fas fa-check"></i> Доступ 9 місяців</li>
-                            <li><i class="fas fa-check"></i> Заняття з терапевтом онлайн (16 занять)</li>
-                            <li><i class="fas fa-check"></i> Первинна консультація Газин І. В.</li>
-                            <li><i class="fas fa-check"></i> Індивідуальний план терапії</li>
-                            <li><i class="fas fa-check"></i> Техніки тейпування, масажу</li>
-                            <li><i class="fas fa-check"></i> Повторна діагностика після 16 занять</li>
-                            <li><i class="fas fa-check"></i> Пріоритетна підтримка</li>
+                            <li><i class="fas fa-check"></i> <span data-translate="tariff-2-feature-1">Доступ 9 місяців</span></li>
+                            <li><i class="fas fa-check"></i> <span data-translate="tariff-2-feature-2">Заняття з терапевтом онлайн (16 занять)</span></li>
+                            <li><i class="fas fa-check"></i> <span data-translate="tariff-2-feature-3">Первинна консультація Газин І. В.</span></li>
+                            <li><i class="fas fa-check"></i> <span data-translate="tariff-2-feature-4">Індивідуальний план терапії</span></li>
+                            <li><i class="fas fa-check"></i> <span data-translate="tariff-2-feature-5">Техніки тейпування, масажу</span></li>
+                            <li><i class="fas fa-check"></i> <span data-translate="tariff-2-feature-6">Повторна діагностика після 16 занять</span></li>
+                            <li><i class="fas fa-check"></i> <span data-translate="tariff-2-feature-7">Пріоритетна підтримка</span></li>
                         </ul>
-                        <a href="https://secure.wayforpay.com/button/bc2abe5c3756e" class="buy-btn">Придбати курс</a>
+                        <a href="https://secure.wayforpay.com/button/bc2abe5c3756e" class="buy-btn" data-translate="buy-btn">Придбати курс</a>
                     </div>
                 </div>
 
                 <!-- Тариф 3 -->
                 <div class="tariff-card">
                     <div class="tariff-header">
-                        <h3 class="tariff-title">Моторна корекція (1,5-3 роки)</h3>
+                        <h3 class="tariff-title" data-translate="tariff-3-title">Моторна корекція (1,5-3 роки)</h3>
                         <div class="tariff-price">5 999</div>
                         <div class="tariff-old-price">7 999 ₴</div>
                     </div>
                     <div class="tariff-content">
                         <ul class="tariff-features">
-                            <li><i class="fas fa-check"></i> Первинна консультація Камененко А.О.</li>
-                            <li><i class="fas fa-check"></i> Доступ на 4 місяці</li>
-                            <li><i class="fas fa-check"></i> Відео-уроки з вправами</li>
-                            <li><i class="fas fa-check"></i> Контроль динаміки через місяць</li>
-                            <li><i class="fas fa-check"></i> Пасивна гімнастика, фітбол</li>
-                            <li><i class="fas fa-check"></i> Заборонені гаджети</li>
-                            <li><i class="fas fa-check"></i> Правила догляду та умов</li>
+                            <li><i class="fas fa-check"></i> <span data-translate="tariff-3-feature-1">Первинна консультація Камененко А.О.</span></li>
+                            <li><i class="fas fa-check"></i> <span data-translate="tariff-3-feature-2">Доступ на 4 місяці</span></li>
+                            <li><i class="fas fa-check"></i> <span data-translate="tariff-3-feature-3">Відео-уроки з вправами</span></li>
+                            <li><i class="fas fa-check"></i> <span data-translate="tariff-3-feature-4">Контроль динаміки через місяць</span></li>
+                            <li><i class="fas fa-check"></i> <span data-translate="tariff-3-feature-5">Пасивна гімнастика, фітбол</span></li>
+                            <li><i class="fas fa-check"></i> <span data-translate="tariff-3-feature-6">Заборонені гаджети</span></li>
+                            <li><i class="fas fa-check"></i> <span data-translate="tariff-3-feature-7">Правила догляду та умов</span></li>
                         </ul>
-                        <a href="https://secure.wayforpay.com/button/b41a29f70d917" class="buy-btn">Придбати курс</a>
+                        <a href="https://secure.wayforpay.com/button/b41a29f70d917" class="buy-btn" data-translate="buy-btn">Придбати курс</a>
                     </div>
                 </div>
 
                 <!-- Тариф 4 -->
                 <div class="tariff-card">
                     <div class="tariff-header">
-                        <h3 class="tariff-title">Моторна корекція Преміум (1,5-3 роки)</h3>
+                        <h3 class="tariff-title" data-translate="tariff-4-title">Моторна корекція Преміум (1,5-3 роки)</h3>
                         <div class="tariff-price">11 999</div>
                         <div class="tariff-old-price">12 900 ₴</div>
                     </div>
                     <div class="tariff-content">
                         <ul class="tariff-features">
-                            <li><i class="fas fa-check"></i> Первинна консультація Камененко А.О.</li>
-                            <li><i class="fas fa-check"></i> Доступ на 6 місяців</li>
-                            <li><i class="fas fa-check"></i> Відео-уроки з вправами</li>
-                            <li><i class="fas fa-check"></i> Постійний контроль динаміки</li>
-                            <li><i class="fas fa-check"></i> Зворотний зв'язок до результату</li>
-                            <li><i class="fas fa-check"></i> Пасивна гімнастика, фітбол</li>
-                            <li><i class="fas fa-check"></i> Особистий супровід</li>
+                            <li><i class="fas fa-check"></i> <span data-translate="tariff-4-feature-1">Первинна консультація Камененко А.О.</span></li>
+                            <li><i class="fas fa-check"></i> <span data-translate="tariff-4-feature-2">Доступ на 6 місяців</span></li>
+                            <li><i class="fas fa-check"></i> <span data-translate="tariff-4-feature-3">Відео-уроки з вправами</span></li>
+                            <li><i class="fas fa-check"></i> <span data-translate="tariff-4-feature-4">Постійний контроль динаміки</span></li>
+                            <li><i class="fas fa-check"></i> <span data-translate="tariff-4-feature-5">Зворотний зв'язок до результату</span></li>
+                            <li><i class="fas fa-check"></i> <span data-translate="tariff-4-feature-6">Пасивна гімнастика, фітбол</span></li>
+                            <li><i class="fas fa-check"></i> <span data-translate="tariff-4-feature-7">Особистий супровід</span></li>
                         </ul>
-                        <a href="https://secure.wayforpay.com/button/b5e8afffbd767" class="buy-btn">Придбати курс</a>
+                        <a href="https://secure.wayforpay.com/button/b5e8afffbd767" class="buy-btn" data-translate="buy-btn">Придбати курс</a>
                     </div>
-                </div>
-            </div>
-
-            <!-- Trust Badges -->
-            <div class="trust-badges">
-                <div class="trust-badge">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>Гарантія якості</span>
-                </div>
-                <div class="trust-badge">
-                    <i class="fas fa-certificate"></i>
-                    <span>Сертифіковані методики</span>
-                </div>
-                <div class="trust-badge">
-                    <i class="fas fa-user-md"></i>
-                    <span>Професійні спеціалісти</span>
-                </div>
-                <div class="trust-badge">
-                    <i class="fas fa-clock"></i>
-                    <span>Підтримка 24/7</span>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Trust Badges -->
+    <div class="trust-badges">
+        <div class="trust-badge">
+            <i class="fas fa-shield-alt"></i>
+            <span data-translate="trust-quality">Гарантія якості</span>
+        </div>
+        <div class="trust-badge">
+            <i class="fas fa-certificate"></i>
+            <span data-translate="trust-certified">Сертифіковані методики</span>
+        </div>
+        <div class="trust-badge">
+            <i class="fas fa-user-md"></i>
+            <span data-translate="trust-professionals">Професійні спеціалісти</span>
+        </div>
+        <div class="trust-badge">
+            <i class="fas fa-clock"></i>
+            <span data-translate="trust-support">Підтримка 24/7</span>
+        </div>
+    </div>
+
     <!-- FAQ Section -->
     <section class="faq-section">
         <div class="container">
-            <h2 class="section-title">Часті запитання</h2>
+            <h2 class="section-title" data-translate="faq-title">Часті запитання</h2>
             
             <div class="faq-list">
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <h3>Скільки часу потрібно приділяти заняттям?</h3>
+                        <h3 data-translate="faq-1-question">Скільки часу потрібно приділяти заняттям?</h3>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Достатньо 30-40 хвилин на день, 5-6 днів на тиждень. Ми розробили програму, яка ефективно працює навіть при мінімальних витратах часу. Вправи поступово ускладнюються, адаптуючись до прогресу дитини.</p>
+                        <p data-translate="faq-1-answer">Достатньо 30-40 хвилин на день, 5-6 днів на тиждень. Ми розробили програму, яка ефективно працює навіть при мінімальних витратах часу. Вправи поступово ускладнюються, адаптуючись до прогресу дитини.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <h3>Чи потрібне спеціальне обладнання?</h3>
+                        <h3 data-translate="faq-2-question">Чи потрібне спеціальне обладнання?</h3>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Для більшості вправ потрібен лише килимок для йоги. Деякі вправи можуть виконуватися з використанням підручних засобів (стілець, стіна), про що ми детально розповідаємо в уроках. Додаткове обладнання не потрібне.</p>
+                        <p data-translate="faq-2-answer">Для більшості вправ потрібен лише килимок для йоги. Деякі вправи можуть виконуватися з використанням підручних засобів (стілець, стіна), про що ми детально розповідаємо в уроках. Додаткове обладнання не потрібне.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <h3>Як відбувається доступ до матеріалів курсу?</h3>
+                        <h3 data-translate="faq-3-question">Як відбувається доступ до матеріалів курсу?</h3>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Після оплати ви отримуєте доступ до особистого кабінету на нашій платформі, де доступні всі відео-уроки, матеріали та додаткові ресурси. Доступ з будь-якого пристрою з інтернетом.</p>
+                        <p data-translate="faq-3-answer">Після оплати ви отримуєте доступ до особистого кабінету на нашій платформі, де доступні всі відео-уроки, матеріали та додаткові ресурси. Доступ з будь-якого пристрою з інтернетом.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <h3>Чи є гарантія результату?</h3>
+                        <h3 data-translate="faq-4-question">Чи є гарантія результату?</h3>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Так, ми надаємо 30-денну гарантію повернення коштів, якщо ви виконували всі рекомендації протягом місяця і не отримали очікуваних результатів. Наш показник успішності складає 98%.</p>
+                        <p data-translate="faq-4-answer">Так, ми надаємо 30-денну гарантію повернення коштів, якщо ви виконували всі рекомендації протягом місяця і не отримали очікуваних результатів. Наш показник успішності складає 98%.</p>
                     </div>
                 </div>
             </div>
@@ -1411,35 +1978,35 @@
     <!-- For Whom Section -->
     <section class="for-whom-section">
         <div class="container">
-            <h2 class="section-title">Для кого підійде наш курс</h2>
+            <h2 class="section-title" data-translate="for-whom-title">Для кого підійде наш курс</h2>
             <p style="text-align: center; font-size: 18px; margin-bottom: 40px; color: var(--primary-color); font-weight: 600; padding: 0 10px;">
                 Курс підійде дітям від 3 до 18 років при наступних порушеннях
             </p>
             
             <div class="for-whom-list">
                 <div class="problem-item">
-                    <h3>Вальгус стоп та колінних суглобів</h3>
-                    <p>(Х-подібні ніжки, вальгусна деформація)</p>
+                    <h3 data-translate="problem-1">Вальгус стоп та колінних суглобів</h3>
+                    <p data-translate="problem-1-desc">(Х-подібні ніжки, вальгусна деформація)</p>
                 </div>
                 <div class="problem-item">
-                    <h3>Порушення постави, сутулість</h3>
-                    <p>Деформації грудної клітини, округлі плечі</p>
+                    <h3 data-translate="problem-2">Порушення постави, сутулість</h3>
+                    <p data-translate="problem-2-desc">Деформації грудної клітини, округлі плечі</p>
                 </div>
                 <div class="problem-item">
-                    <h3>Кифоз, сколіоз</h3>
-                    <p>Всі види викривлень хребта, бокові деформації</p>
+                    <h3 data-translate="problem-3">Кифоз, сколіоз</h3>
+                    <p data-translate="problem-3-desc">Всі види викривлень хребта, бокові деформації</p>
                 </div>
                 <div class="problem-item">
-                    <h3>Гіперлордоз поперекового відділу</h3>
-                    <p>Надмірний прогин попереку, "утина" постава</p>
+                    <h3 data-translate="problem-4">Гіперлордоз поперекового відділу</h3>
+                    <p data-translate="problem-4-desc">Надмірний прогин попереку, "утина" постава</p>
                 </div>
                 <div class="problem-item">
-                    <h3>Варусна деформація ніг</h3>
-                    <p>Ніжки «колесом», О-подібні ноги</p>
+                    <h3 data-translate="problem-5">Варусна деформація ніг</h3>
+                    <p data-translate="problem-5-desc">Ніжки «колесом", О-подібні ноги</p>
                 </div>
                 <div class="problem-item">
-                    <h3>Плоскостопість, косолапість</h3>
-                    <p>Різні види порушень стоп, неправильна постава</p>
+                    <h3 data-translate="problem-6">Плоскостопість, косолапість</h3>
+                    <p data-translate="problem-6-desc">Різні види порушень стоп, неправильна постава</p>
                 </div>
             </div>
         </div>
@@ -1454,37 +2021,430 @@
                         <i class="fas fa-hands-helping"></i>
                         <span>БЕРЕГИНЯ</span>
                     </div>
-                    <p>Центр відновлювальної медицини та нутриціології. Професійна допомога дітям з порушеннями опорно-рухового апарату з 2012 року.</p>
+                    <p data-translate="footer-description">Центр відновлювальної медицини та нутриціології. Професійна допомога дітям з порушеннями опорно-рухового апарату з 2012 року.</p>
                 </div>
                 
                 <div class="footer-links">
-                    <h4>Навігація</h4>
+                    <h4 data-translate="footer-nav-title">Навігація</h4>
                     <ul>
-                        <li><a href="/">Іван Газін</a></li>
-                        <li><a href="/course">Онлайн-курс</a></li>
-                        <li><a href="reviews.html">Відгуки</a></li>
+                        <li><a href="index.html" data-translate="footer-nav-home">Іван Газін</a></li>
+                        <li><a href="course.html" data-translate="footer-nav-course">Онлайн-курс</a></li>
+                        <li><a href="reviews.html" data-translate="footer-nav-reviews">Відгуки</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-contact">
-                    <h4>Контакти</h4>
-                    <p><i class="fas fa-map-marker-alt"></i>вулиця Чернишевського, 26, Ізмаїл, Одеська область, 68601</p>
-                    <p><i class="fas fa-phone"></i> +380 67 484 93 08</p>
-                    <p><i class="fas fa-envelope"></i> naturalmedical96@gmail.com</p>
-                    <p><i class="fas fa-clock"></i> Пн-Пт: 9:00-20:00, Сб: 10:00-18:00</p>
+                    <h4 data-translate="footer-contacts-title">Контакти</h4>
+                    <p><i class="fas fa-map-marker-alt"></i><span data-translate="footer-address">вулиця Чернишевського, 26, Ізмаїл, Одеська область, 68601</span></p>
+                    <p><i class="fas fa-phone"></i> <span data-translate="footer-phone">+380 67 484 93 08</span></p>
+                    <p><i class="fas fa-envelope"></i> <span data-translate="footer-email">naturalmedical96@gmail.com</span></p>
+                    <p><i class="fas fa-clock"></i> <span data-translate="footer-hours">Пн-Пт: 9:00-20:00, Сб: 10:00-18:00</span></p>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>© 2024 БЕРЕГИНЯ. Всі права захищені.</p>
-                <a class="Footer__item--Zvl" href="https://bereginia.online/public-offer" target="_blank">Договір оферти</a>
+                <p><span data-translate="footer-copyright"> 2024 БЕРЕГИНЯ. Всі права захищені.</span></p>
+                <a class="Footer__item--Zvl" href="https://bereginia.online/public-offer" target="_blank"><span data-translate="footer-offer">Договір оферти</span></a>
                 <span style="margin: 0 10px;">|</span>
-                <a class="Footer__item--Zvl" href="#" target="_blank">Політика конфіденційності</a>
+                <a class="Footer__item--Zvl" href="#" target="_blank"><span data-translate="footer-privacy">Політика конфіденційності</span></a>
             </div>
         </div>
     </footer>
 
     <script>
+        // Бургер меню функциональность
+        const burgerMenu = document.getElementById('burgerMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMenu = document.getElementById('closeMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const mainHeader = document.getElementById('mainHeader');
+        
+        function openMenu() {
+            // Если меню уже открыто, не делаем ничего
+            if (mobileMenu.classList.contains('active')) {
+                return;
+            }
+            
+            burgerMenu.classList.add('active');
+            mobileMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            
+            // Добавляем класс для скрытия логотипа и бургер-иконки
+            mainHeader.classList.add('mobile-menu-open');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeMenuFunc() {
+            burgerMenu.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            mainHeader.classList.remove('mobile-menu-open');
+            document.body.style.overflow = '';
+            
+            // Показываем бургер-иконку обратно
+            const burgerIcon = document.querySelector('.burger-icon');
+            if (burgerIcon) burgerIcon.style.display = 'flex';
+            
+            // Принудительно показываем логотип
+            const logo = document.querySelector('.logo');
+            if (logo) {
+                logo.style.opacity = '1';
+                logo.style.visibility = 'visible';
+                logo.style.display = 'flex';
+            }
+            
+            console.log('Закрытие меню - логотип:', logo, 'бургер-иконка:', burgerIcon);
+        }
+        
+        burgerMenu.addEventListener('click', openMenu);
+        closeMenu.addEventListener('click', closeMenuFunc);
+        menuOverlay.addEventListener('click', closeMenuFunc);
+        
+        // Закрытие меню при клике на ссылку
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', closeMenuFunc);
+        });
+        
+        // Получаем кнопки языка
+        const langButtons = document.querySelectorAll('.lang-btn');
+        
+        // Переключатель языка с полной функциональностью
+        const translations = {
+            uk: {
+                // Навигация
+                navHome: 'Іван Газін',
+                navCourse: 'Онлайн-курс',
+                navReviews: 'Відгуки',
+                // Язык
+                langTitle: 'Мова / Язык',
+                langUk: 'Українська',
+                langRu: 'Русский',
+                
+                // Course Hero
+                'course-title': '«Вальгус + постава, сколіоз»',
+                'course-subtitle': 'Онлайн-курс корекції',
+                'course-description': 'Вилікуйте порушення постави та ніжок у вашої дитини без операції за допомогою революційних методик! Наша методика поєднує німецькі технології та власні розробки для максимальної ефективності.',
+                'course-benefit': 'Займайтеся у зручний для вас час з максимальною ефективністю під повним контролем професіонала!',
+                'course-stat-success': 'Успішних результатів',
+                'course-stat-children': 'Вилікуваних дітей',
+                'course-stat-years': 'Років досвіду',
+                'course-stat-support': 'Підтримка',
+                
+                // Course Info
+                'course-info-1': 'Метод корекції сколіозу за німецькою методикою Катаріни Шрот є золотим стандартом лікування без операції та зробив прорив у лікуванні сколіозу!',
+                'course-info-2': 'Корегуємо дисплазію сполучної тканини, яка призводить до вальгусу та сколіозу, працюючи з дефіцитними станами. Наш підхід враховує індивідуальні особливості кожної дитини.',
+                'course-info-3': 'Ми коригуємо сколіоз 3 ст. всього за 1 год на день навіть без корсета Шено, в якому дитині довелося б ходити по 20 годин на добу. Це революція у лікуванні сколіозу!',
+                
+                // Tariffs
+                'tariffs-title': 'Тарифи курсу',
+                'tariff-1-title': 'Індивідуальний Стандарт',
+                'tariff-2-title': 'Індивідуальний Преміум',
+                'tariff-3-title': 'Моторна корекція (1,5-3 роки)',
+                'tariff-4-title': 'Моторна корекція Преміум (1,5-3 роки)',
+                'buy-btn': 'Придбати курс',
+                
+                // Tariff Features
+                'tariff-1-feature-1': 'Доступ 5 місяців',
+                'tariff-1-feature-2': 'Кураторство терапевта 3 місяці',
+                'tariff-1-feature-3': 'Онлайн-заняття 2-3 рази на тиждень (12 занять)',
+                'tariff-1-feature-4': 'Первинна консультація Газин І. В.',
+                'tariff-1-feature-5': 'Індивідуальний план терапії',
+                'tariff-1-feature-6': 'Техніки тейпування, масажу',
+                'tariff-1-feature-7': 'Повторна діагностика через 3 місяці',
+                
+                'tariff-2-feature-1': 'Доступ 9 місяців',
+                'tariff-2-feature-2': 'Заняття з терапевтом онлайн (16 занять)',
+                'tariff-2-feature-3': 'Первинна консультація Газин І. В.',
+                'tariff-2-feature-4': 'Індивідуальний план терапії',
+                'tariff-2-feature-5': 'Техніки тейпування, масажу',
+                'tariff-2-feature-6': 'Повторна діагностика після 16 занять',
+                'tariff-2-feature-7': 'Пріоритетна підтримка',
+                
+                'tariff-3-feature-1': 'Первинна консультація Камененко А.О.',
+                'tariff-3-feature-2': 'Доступ на 4 місяці',
+                'tariff-3-feature-3': 'Відео-уроки з вправами',
+                'tariff-3-feature-4': 'Контроль динаміки через місяць',
+                'tariff-3-feature-5': 'Пасивна гімнастика, фітбол',
+                'tariff-3-feature-6': 'Заборонені гаджети',
+                'tariff-3-feature-7': 'Правила догляду та умов',
+                
+                'tariff-4-feature-1': 'Первинна консультація Камененко А.О.',
+                'tariff-4-feature-2': 'Доступ на 6 місяців',
+                'tariff-4-feature-3': 'Відео-уроки з вправами',
+                'tariff-4-feature-4': 'Постійний контроль динаміки',
+                'tariff-4-feature-5': 'Зворотний зв’язок до результату',
+                'tariff-4-feature-6': 'Пасивна гімнастика, фітбол',
+                'tariff-4-feature-7': 'Особистий супровід',
+                
+                // Trust Badges
+                'trust-quality': 'Гарантія якості',
+                'trust-certified': 'Сертифіковані методики',
+                'trust-professionals': 'Професійні спеціалісти',
+                'trust-support': 'Підтримка 24/7',
+                
+                // FAQ
+                'faq-title': 'Часті запитання',
+                'faq-1-question': 'Скільки часу потрібно приділяти заняттям?',
+                'faq-1-answer': 'Достатньо 30-40 хвилин на день, 5-6 днів на тиждень. Ми розробили програму, яка ефективно працює навіть при мінімальних витратах часу. Вправи поступово ускладнюються, адаптуючись до прогресу дитини.',
+                'faq-2-question': 'Чи потрібне спеціальне обладнання?',
+                'faq-2-answer': 'Для більшості вправ потрібен лише килимок для йоги. Деякі вправи можуть виконуватися з використанням підручних засобів (стілець, стіна), про що ми детально розповідаємо в уроках. Додаткове обладнання не потрібне.',
+                'faq-3-question': 'Як відбувається доступ до матеріалів курсу?',
+                'faq-3-answer': 'Після оплати ви отримуєте доступ до особистого кабінету на нашій платформі, де доступні всі відео-уроки, матеріали та додаткові ресурси. Доступ з будь-якого пристрою з інтернетом.',
+                'faq-4-question': 'Чи є гарантія результату?',
+                'faq-4-answer': 'Так, ми надаємо 30-денну гарантію повернення коштів, якщо ви виконували всі рекомендації протягом місяця і не отримали очікуваних результатів. Наш показник успішності складає 98%.',
+                
+                // For Whom
+                'for-whom-title': 'Для кого підійде наш курс',
+                'for-whom-description': 'Курс підійде дітям від 3 до 18 років при наступних порушеннях',
+                'problem-1': 'Вальгус стоп та колінних суглобів',
+                'problem-1-desc': '(Х-подібні ніжки, вальгусна деформація)',
+                'problem-2': 'Порушення постави, сутулість',
+                'problem-2-desc': 'Деформації грудної клітини, округлі плечі',
+                'problem-3': 'Кифоз, сколіоз',
+                'problem-3-desc': 'Всі види викривлень хребта, бокові деформації',
+                'problem-4': 'Гіперлордоз поперекового відділу',
+                'problem-4-desc': 'Надмірний прогин попереку, "утина" постава',
+                'problem-5': 'Варусна деформація ніг',
+                'problem-5-desc': 'Ніжки «колесом", О-подібні ноги',
+                'problem-6': 'Плоскостопість, косолапість',
+                'problem-6-desc': 'Різні види порушень стоп, неправильна постава',
+                
+                // Footer
+                'footer-description': 'Центр відновлювальної медицини та нутриціології. Професійна допомога дітям з порушеннями опорно-рухового апарату з 2012 року.',
+                'footer-nav-title': 'Навігація',
+                'footer-nav-home': 'Іван Газін',
+                'footer-nav-course': 'Онлайн-курс',
+                'footer-nav-reviews': 'Відгуки',
+                'footer-contacts-title': 'Контакти',
+                'footer-address': 'вулиця Чернишевського, 26, Ізмаїл, Одеська область, 68601',
+                'footer-phone': '+380 67 484 93 08',
+                'footer-email': 'naturalmedical96@gmail.com',
+                'footer-hours': 'Пн-Пт: 9:00-20:00, Сб: 10:00-18:00',
+                'footer-copyright': ' 2024 БЕРЕГИНЯ. Всі права захищені.',
+                'footer-offer': 'Договір оферти',
+                'footer-privacy': 'Політика конфіденційності'
+            },
+            ru: {
+                // Навигация
+                navHome: 'Иван Газин',
+                navCourse: 'Онлайн-курс',
+                navReviews: 'Отзывы',
+                // Язык
+                langTitle: 'Язык / Мова',
+                langUk: 'Украинский',
+                langRu: 'Русский',
+                
+                // Course Hero
+                'course-title': '«Вальгус + осанка, сколиоз»',
+                'course-subtitle': 'Онлайн-курс коррекции',
+                'course-description': 'Вылечите нарушения осанки и ног вашего ребенка без операции с помощью революционных методик! Наша методика объединяет немецкие технологии и собственные разработки для максимальной эффективности.',
+                'course-benefit': 'Занимайтесь в удобное для вас время с максимальной эффективностью под полным контролем профессионала!',
+                'course-stat-success': 'Успешных результатов',
+                'course-stat-children': 'Вылеченных детей',
+                'course-stat-years': 'Лет опыта',
+                'course-stat-support': 'Поддержка',
+                
+                // Course Info
+                'course-info-1': 'Метод коррекции сколиоза по немецкой методике Катарины Шрот является золотым стандартом лечения без операции и сделал прорыв в лечении сколиоза!',
+                'course-info-2': 'Корректируем дисплазию соединительной ткани, которая приводит к вальгусу и сколиозу, работая с дефицитными состояниями. Наш подход учитывает индивидуальные особенности каждого ребенка.',
+                'course-info-3': 'Мы корректируем сколиоз 3 ст. всего за 1 час в день даже без корсета Шено, в котором ребенку пришлось бы ходить по 20 часов в сутки. Это революция в лечении сколиоза!',
+                
+                // Tariffs
+                'tariffs-title': 'Тарифы курса',
+                'tariff-1-title': 'Индивидуальный Стандарт',
+                'tariff-2-title': 'Индивидуальный Премиум',
+                'tariff-3-title': 'Моторная коррекция (1,5-3 года)',
+                'tariff-4-title': 'Моторная коррекция Премиум (1,5-3 года)',
+                'buy-btn': 'Приобрести курс',
+                
+                // Tariff Features
+                'tariff-1-feature-1': 'Доступ 5 месяцев',
+                'tariff-1-feature-2': 'Курирование терапевта 3 месяца',
+                'tariff-1-feature-3': 'Онлайн-занятия 2-3 раза в неделю (12 занятий)',
+                'tariff-1-feature-4': 'Первичная консультация Газин И. В.',
+                'tariff-1-feature-5': 'Индивидуальный план терапии',
+                'tariff-1-feature-6': 'Техники тейпирования, массажа',
+                'tariff-1-feature-7': 'Повторная диагностика через 3 месяца',
+                
+                'tariff-2-feature-1': 'Доступ 9 месяцев',
+                'tariff-2-feature-2': 'Занятия с терапевтом онлайн (16 занятий)',
+                'tariff-2-feature-3': 'Первичная консультация Газин И. В.',
+                'tariff-2-feature-4': 'Индивидуальный план терапии',
+                'tariff-2-feature-5': 'Техники тейпирования, массажа',
+                'tariff-2-feature-6': 'Повторная диагностика после 16 занятий',
+                'tariff-2-feature-7': 'Приоритетная поддержка',
+                
+                'tariff-3-feature-1': 'Первичная консультация Камененко А.О.',
+                'tariff-3-feature-2': 'Доступ на 4 месяца',
+                'tariff-3-feature-3': 'Видео-уроки с упражнениями',
+                'tariff-3-feature-4': 'Контроль динамики через месяц',
+                'tariff-3-feature-5': 'Пассивная гимнастика, фитбол',
+                'tariff-3-feature-6': 'Запрещенные гаджеты',
+                'tariff-3-feature-7': 'Правила ухода и условия',
+                
+                'tariff-4-feature-1': 'Первичная консультация Камененко А.О.',
+                'tariff-4-feature-2': 'Доступ на 6 месяцев',
+                'tariff-4-feature-3': 'Видео-уроки с упражнениями',
+                'tariff-4-feature-4': 'Постоянный контроль динамики',
+                'tariff-4-feature-5': 'Обратная связь до результата',
+                'tariff-4-feature-6': 'Пассивная гимнастика, фитбол',
+                'tariff-4-feature-7': 'Личное сопровождение',
+                
+                // Trust Badges
+                'trust-quality': 'Гарантия качества',
+                'trust-certified': 'Сертифицированные методики',
+                'trust-professionals': 'Профессиональные специалисты',
+                'trust-support': 'Поддержка 24/7',
+                
+                // FAQ
+                'faq-title': 'Частые вопросы',
+                'faq-1-question': 'Сколько времени нужно уделять занятиям?',
+                'faq-1-answer': 'Достаточно 30-40 минут в день, 5-6 дней в неделю. Мы разработали программу, которая эффективно работает даже при минимальных затратах времени. Упражнения постепенно усложняются, адаптируясь к прогрессу ребенка.',
+                'faq-2-question': 'Нужно ли специальное оборудование?',
+                'faq-2-answer': 'Для большинства упражнений нужен только коврик для йоги. Некоторые упражнения могут выполняться с использованием подручных средств (стул, стена), о чем мы подробно рассказываем в уроках. Дополнительное оборудование не нужно.',
+                'faq-3-question': 'Как происходит доступ к материалам курса?',
+                'faq-3-answer': 'После оплаты вы получаете доступ к личному кабинету на нашей платформе, где доступны все видео-уроки, материалы и дополнительные ресурсы. Доступ с любого устройства с интернетом.',
+                'faq-4-question': 'Есть ли гарантия результата?',
+                'faq-4-answer': 'Да, мы предоставляем 30-дневную гарантию возврата средств, если вы выполняли все рекомендации в течение месяца и не получили ожидаемых результатов. Наш показатель успешности составляет 98%.',
+                
+                // For Whom
+                'for-whom-title': 'Для кого подойдет наш курс',
+                'for-whom-description': 'Курс подойдет детям от 3 до 18 лет при следующих нарушениях',
+                'problem-1': 'Вальгус стоп и коленных суставов',
+                'problem-1-desc': '(Х-образные ножки, вальгусная деформация)',
+                'problem-2': 'Нарушения осанки, сутулость',
+                'problem-2-desc': 'Деформации грудной клетки, округлые плечи',
+                'problem-3': 'Кифоз, сколиоз',
+                'problem-3-desc': 'Все виды искривлений позвоночника, боковые деформации',
+                'problem-4': 'Гиперлордоз поясничного отдела',
+                'problem-4-desc': 'Чрезмерный прогиб поясницы, "утиная" осанка',
+                'problem-5': 'Варусная деформация ног',
+                'problem-5-desc': 'Ножки «колесом», О-образные ноги',
+                'problem-6': 'Плоскостопие, косолапость',
+                'problem-6-desc': 'Разные виды нарушений стоп, неправильная осанка',
+                
+                // Footer
+                'footer-description': 'Центр восстановительной медицины и нутрициологии. Профессиональная помощь детям с нарушениями опорно-двигательного аппарата с 2012 года.',
+                'footer-nav-title': 'Навигация',
+                'footer-nav-home': 'Иван Газин',
+                'footer-nav-course': 'Онлайн-курс',
+                'footer-nav-reviews': 'Отзывы',
+                'footer-contacts-title': 'Контакты',
+                'footer-address': 'улица Чернышевского, 26, Измаил, Одесская область, 68601',
+                'footer-phone': '+380 67 484 93 08',
+                'footer-email': 'naturalmedical96@gmail.com',
+                'footer-hours': 'Пн-Пт: 9:00-20:00, Сб: 10:00-18:00',
+                'footer-copyright': ' 2024 БЕРЕГИНЯ. Все права защищены.',
+                'footer-offer': 'Договор оферты',
+                'footer-privacy': 'Политика конфиденциальности'
+            }
+        };
+
+        function updateLanguage(lang) {
+            const t = translations[lang];
+            
+            // Переводим все элементы с data-translate атрибутом
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (t[key]) {
+                    element.textContent = t[key];
+                }
+            });
+            
+            // Обновляем навигацию в мобильном меню
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+            if (mobileNavLinks[0]) mobileNavLinks[0].textContent = t.navHome;
+            if (mobileNavLinks[1]) mobileNavLinks[1].textContent = t.navCourse;
+            if (mobileNavLinks[2]) mobileNavLinks[2].textContent = t.navReviews;
+            
+            // 
+            langButtons.forEach(btn => {
+                const btnLang = btn.dataset.lang;
+                const span = btn.querySelector('span');
+                if (btnLang === 'uk') {
+                    span.textContent = t.langUk;
+                } else if (btnLang === 'ru') {
+                    span.textContent = t.langRu;
+                }
+            });
+            
+            // Устанавливаем активную кнопку
+            langButtons.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.lang === lang) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Устанавливаем атрибут языка для документа
+            document.documentElement.lang = lang;
+            
+            // Сохраняем выбор в localStorage
+            localStorage.setItem('selectedLanguage', lang);
+        }
+
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation(); // Предотвращаем закрытие меню
+                
+                langButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                const lang = this.dataset.lang;
+                console.log('Выбран язык:', lang);
+                
+                // Анимация нажатия
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+                
+                // Обновляем язык на сайте
+                updateLanguage(lang);
+            });
+        });
+        
+        // Загружаем сохраненный язык при загрузке страницы
+        const savedLanguage = localStorage.getItem('selectedLanguage') || 'uk';
+        
+        // Устанавливаем активную кнопку для сохраненного языка
+        langButtons.forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.dataset.lang === savedLanguage) {
+                btn.classList.add('active');
+            }
+        });
+        
+        // Применяем сохраненный язык ко всем элементам
+        updateLanguage(savedLanguage);
+        
+        // Закрытие меню по ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                closeMenuFunc();
+            }
+        });
+
+        // Закрытие меню при прокрутке колесика мыши - ОТКЛЮЧЕНО
+        // let scrollTimeout;
+        // document.addEventListener('wheel', function(e) {
+        //     if (mobileMenu.classList.contains('active')) {
+        //         // Предотвращаем прокрутку страницы во время анимации закрытия меню
+        //         e.preventDefault();
+        //         
+        //         // Закрываем меню с плавной анимацией
+        //         closeMenuFunc();
+        //         
+        //         // Через небольшую задержку разрешаем прокрутку
+        //         clearTimeout(scrollTimeout);
+        //         scrollTimeout = setTimeout(() => {
+        //             // Разрешаем прокрутку страницы
+        //             document.body.style.overflow = '';
+        //         }, 300); // Время анимации закрытия меню
+        //     }
+        // }, { passive: false });
+
         // Скрытие/показ меню при прокрутке
         let lastScrollTop = 0;
         const header = document.getElementById('mainHeader');
