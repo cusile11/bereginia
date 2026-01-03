@@ -1815,6 +1815,14 @@
                 'appointment-form-title': 'Запис на діагностику',
                 'appointment-form-subtitle': 'Онлайн-консультація з Іваном Газіним',
                 
+                // Form features and benefits
+                'form-feature-online': 'Онлайн-консультація',
+                'form-feature-duration': '60-90 хвилин',
+                'form-feature-specialist': 'Особисто Іван Газін',
+                'form-benefit-analysis': 'Детальний аналіз вашої ситуації',
+                'form-benefit-plan': 'Індивідуальний план лікування',
+                'form-benefit-answers': 'Відповіді на всі ваші запитання',
+                
                 // Reviews
                 'reviews-title': 'Відгуки наших пацієнтів',
                 'reviews-subtitle': 'Реальні результати та задоволені пацієнти',
@@ -1944,6 +1952,14 @@
                 'appointment-form-title': 'Запись на диагностику',
                 'appointment-form-subtitle': 'Онлайн-консультация с Иваном Газиным',
                 
+                // Form features and benefits
+                'form-feature-online': 'Онлайн-консультация',
+                'form-feature-duration': '60-90 минут',
+                'form-feature-specialist': 'Лично Иван Газин',
+                'form-benefit-analysis': 'Детальный анализ вашей ситуации',
+                'form-benefit-plan': 'Индивидуальный план лечения',
+                'form-benefit-answers': 'Ответы на все ваши вопросы',
+                
                 // Reviews
                 'reviews-title': 'Отзывы наших пациентов',
                 'reviews-subtitle': 'Реальные результаты и довольные пациенты',
@@ -1970,12 +1986,16 @@
 
         function updateLanguage(lang) {
             const t = translations[lang];
+            console.log('Updating language to:', lang);
             
             // Переводим все элементы с data-translate атрибутом
             document.querySelectorAll('[data-translate]').forEach(element => {
                 const key = element.getAttribute('data-translate');
                 if (t[key]) {
+                    console.log('Translating:', key, 'from', element.textContent, 'to', t[key]);
                     element.textContent = t[key];
+                } else {
+                    console.log('Missing translation for key:', key);
                 }
             });
             
@@ -2314,30 +2334,30 @@
                     <div class="form-features">
                         <div class="form-feature">
                             <i class="fas fa-video"></i>
-                            <span>Онлайн-консультація</span>
+                            <span data-translate="form-feature-online">Онлайн-консультація</span>
                         </div>
                         <div class="form-feature">
                             <i class="fas fa-clock"></i>
-                            <span>60-90 хвилин</span>
+                            <span data-translate="form-feature-duration">60-90 хвилин</span>
                         </div>
                         <div class="form-feature">
                             <i class="fas fa-user-md"></i>
-                            <span>Особисто Іван Газін</span>
+                            <span data-translate="form-feature-specialist">Особисто Іван Газін</span>
                         </div>
                     </div>
                     
                     <div class="form-benefits">
                         <div class="benefit-item">
                             <i class="fas fa-check"></i>
-                            <span>Детальний аналіз вашої ситуації</span>
+                            <span data-translate="form-benefit-analysis">Детальний аналіз вашої ситуації</span>
                         </div>
                         <div class="benefit-item">
                             <i class="fas fa-check"></i>
-                            <span>Індивідуальний план лікування</span>
+                            <span data-translate="form-benefit-plan">Індивідуальний план лікування</span>
                         </div>
                         <div class="benefit-item">
                             <i class="fas fa-check"></i>
-                            <span>Відповіді на всі ваші запитання</span>
+                            <span data-translate="form-benefit-answers">Відповіді на всі ваші запитання</span>
                         </div>
                     </div>
                     
