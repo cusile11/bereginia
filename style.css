@@ -2989,3 +2989,170 @@ body > *:first-child:not(header) {
 .main-header {
     margin-bottom: 0 !important;
 }
+
+/* ===== СТИЛИ ДЛЯ СТРАНИЦЫ ОФЕРТЫ ===== */
+.oferta-page {
+    padding: 120px 0 80px;
+    background: linear-gradient(135deg, var(--light) 0%, var(--secondary-light) 100%);
+    min-height: 100vh;
+}
+
+.oferta-page .page-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.oferta-page .page-header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 20px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.oferta-page .page-subtitle {
+    font-size: 1.2rem;
+    color: var(--gray);
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.oferta-content {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+}
+
+.oferta-section {
+    padding: 40px 50px;
+    border-bottom: 1px solid var(--light-gray);
+    transition: var(--transition);
+}
+
+.oferta-section:last-of-type {
+    border-bottom: none;
+}
+
+.oferta-section:hover {
+    background: var(--light);
+}
+
+.oferta-section h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.oferta-section h2::before {
+    content: '';
+    width: 5px;
+    height: 30px;
+    background: var(--secondary);
+    border-radius: 3px;
+}
+
+.oferta-section h3 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--primary-dark);
+    margin: 25px 0 15px;
+}
+
+.oferta-section p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--dark);
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.oferta-section p:last-child {
+    margin-bottom: 0;
+}
+
+.oferta-footer {
+    background: var(--primary);
+    color: white;
+    padding: 30px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.oferta-footer p {
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Адаптивность для оферты */
+@media (max-width: 768px) {
+    .oferta-page {
+        padding: 100px 0 60px;
+    }
+    
+    .oferta-page .page-header h1 {
+        font-size: 2.2rem;
+    }
+    
+    .oferta-page .page-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .oferta-section {
+        padding: 30px 25px;
+    }
+    
+    .oferta-section h2 {
+        font-size: 1.5rem;
+    }
+    
+    .oferta-section h3 {
+        font-size: 1.3rem;
+    }
+    
+    .oferta-section p {
+        font-size: 1rem;
+    }
+    
+    .oferta-footer {
+        padding: 25px;
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .oferta-page {
+        padding: 80px 0 40px;
+    }
+    
+    .oferta-page .page-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .oferta-section {
+        padding: 25px 20px;
+    }
+    
+    .oferta-section h2 {
+        font-size: 1.3rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .oferta-section h2::before {
+        width: 40px;
+        height: 4px;
+    }
+}

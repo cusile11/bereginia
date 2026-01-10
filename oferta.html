@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Договір оферти - БЕРЕГИНЯ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2a5c8d;
+            --primary-dark: #1e4569;
+            --secondary: #4ecdc4;
+            --secondary-light: #6de6dd;
+            --light: #f8f9fa;
+            --light-gray: #e9ecef;
+            --dark: #343a40;
+            --gray: #6c757d;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background: linear-gradient(135deg, var(--light) 0%, var(--secondary-light) 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .oferta-wrapper {
+            padding: 60px 0;
+        }
+
+        .oferta-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .oferta-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .oferta-header p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            font-weight: 400;
+        }
+
+        .oferta-content {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .oferta-section {
+            padding: 35px 40px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .oferta-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .oferta-section h2 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .oferta-section h2::before {
+            content: '';
+            width: 4px;
+            height: 25px;
+            background: var(--secondary);
+            border-radius: 3px;
+        }
+
+        .oferta-section h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--primary-dark);
+            margin: 20px 0 12px;
+        }
+
+        .oferta-section p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--dark);
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .oferta-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .oferta-wrapper {
+                padding: 40px 0;
+            }
+            
+            .oferta-header h1 {
+                font-size: 2rem;
+            }
+            
+            .oferta-section {
+                padding: 25px 20px;
+            }
+            
+            .oferta-section h2 {
+                font-size: 1.4rem;
+            }
+            
+            .oferta-section h3 {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .oferta-wrapper {
+                padding: 30px 0;
+            }
+            
+            .oferta-header h1 {
+                font-size: 1.7rem;
+            }
+            
+            .oferta-section {
+                padding: 20px 15px;
+            }
+            
+            .oferta-section h2 {
+                font-size: 1.3rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .oferta-section h2::before {
+                width: 30px;
+                height: 3px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="oferta-wrapper">
+            <div class="oferta-header">
+                <h1>Договір оферти</h1>
+                <p>Умови використання матеріалів та послуг</p>
+            </div>
+
+            <div class="oferta-content">
+                <section class="oferta-section">
+                    <h2>Доступ до матеріалів. Авторське право</h2>
+                    <p>Усі навчальні, методичні, відео-, фото- та текстові матеріали, що надаються Фізичною особою — підприємцем Газін І.В (далі — «Виконавець») у межах онлайн-супроводу, є об'єктами авторського права та інтелектуальної власності Виконавця відповідно до Закону України «Про авторське право і суміжні права».</p>
+                    <p>Користувачеві надається обмежене, невиключне, непередаване право користування Матеріалами виключно для особистих цілей у межах онлайн-терапії.</p>
+                    <p>Забороняється без письмової згоди Виконавця будь-яке копіювання, збереження, розповсюдження, передача третім особам або інше використання Матеріалів, не передбачене цією Офертою.</p>
+                </section>
+
+                <section class="oferta-section">
+                    <h2>Строк доступу</h2>
+                    <p>Строк доступу до Матеріалів становить три (3) місяці з моменту підключення до онлайн-супроводу, якщо інше не погоджено Сторонами окремо.</p>
+                    <p>Доступ до Матеріалів надається виключно за умови активного терапевтичного супроводу з боку Виконавця.</p>
+                    <p>У разі припинення онлайн-занять з терапевтом або відсутності активності Користувача протягом 30 (тридцяти) календарних днів, доступ до Матеріалів тимчасово призупиняється без компенсації вартості послуг.</p>
+                    <p>Відновлення доступу можливе після поновлення онлайн-занять з терапевтом та за погодженням Виконавця.</p>
+                </section>
+
+                <section class="oferta-section">
+                    <h2>Відповідальність Користувача</h2>
+                    <p>Користувач підтверджує, що самостійне використання Матеріалів без супроводу спеціаліста не є терапією, може знижувати ефективність занять, а Виконавець не несе відповідальності за результати у такому випадку.</p>
+                    <p>Виконавець залишає за собою право змінювати, оновлювати або припиняти доступ до Матеріалів у разі порушення умов цієї Оферти.</p>
+                </section>
+
+                <section class="oferta-section">
+                    <h2>Відсутність гарантій результату</h2>
+                    <h3>Відсутність гарантій терапевтичного результату</h3>
+                    <p>Користувач усвідомлює та погоджується, що онлайн-супровід, фізична терапія та методики, які застосовуються Виконавцем, не є медичною допомогою у розумінні екстреного або стаціонарного лікування.</p>
+                    <p>Виконавець не гарантує досягнення конкретного терапевтичного результату, оскільки ефективність занять залежить від індивідуальних особливостей організму, регулярності виконання рекомендацій, рівня залученості Користувача (дитини та/або батьків), а також зовнішніх факторів, що не залежать від Виконавця.</p>
+                    <p>Самостійне або нерегулярне виконання вправ, відхилення від рекомендацій спеціаліста, переривання онлайн-супроводу звільняє Виконавця від відповідальності за відсутність або зниження результату.</p>
+                    <p>Оплата послуг є оплатою за процес надання консультаційних та терапевтичних послуг, а не за досягнення конкретного результату.</p>
+                </section>
+
+                <section class="oferta-section">
+                    <h2>Контактна інформація</h2>
+                    <p>Фізична особа — підприємець Газін І.В.</p>
+                    <p>Email: naturalmedical96@gmail.com</p>
+                    <p>Телефон: +380 67 484 93 08</p>
+                    <p>Адреса: вулиця Чернишевського, 26, Ізмаїл, Одеська область, 68601</p>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

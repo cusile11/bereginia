@@ -1672,6 +1672,96 @@
             }
         }
         
+        /* Course Access Information Styles */
+        .course-access-info {
+            padding: 60px 0;
+            background: transparent;
+            position: relative;
+        }
+
+        .access-info-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .access-info-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .access-info-header i {
+            font-size: 24px;
+            color: var(--primary-color);
+            background: rgba(0, 87, 183, 0.1);
+            padding: 12px;
+            border-radius: 50%;
+        }
+
+        .access-info-header h3 {
+            color: var(--text-color);
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        .access-info-text {
+            display: grid;
+            gap: 20px;
+        }
+
+        .access-info-text p {
+            color: var(--text-color);
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0 0 0 30px;
+            position: relative;
+            font-weight: 400;
+        }
+
+        .access-info-text p::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--accent-color);
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        @media (max-width: 768px) {
+            .course-access-info {
+                padding: 40px 20px;
+            }
+            
+            .access-info-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .access-info-header i {
+                font-size: 20px;
+                padding: 10px;
+            }
+            
+            .access-info-header h3 {
+                font-size: 20px;
+            }
+            
+            .access-info-text p {
+                font-size: 15px;
+                padding: 0 0 0 25px;
+            }
+            
+            .access-info-text p::before {
+                font-size: 16px;
+            }
+        }
+        
     </style>
 </head>
 
@@ -1906,6 +1996,24 @@
         </div>
     </section>
 
+    <!-- Course Access Information -->
+    <section class="course-access-info">
+        <div class="container">
+            <div class="access-info-content">
+                <div class="access-info-header">
+                    <i class="fas fa-info-circle"></i>
+                    <h3 data-translate="access-info-title">Умови доступу до матеріалів</h3>
+                </div>
+                <div class="access-info-text">
+                    <p data-translate="access-info-1">Всі матеріали надаються виключно в рамках активного терапевтичного супроводу.</p>
+                    <p data-translate="access-info-2">У разі припинення онлайн-занять з терапевтом доступ до матеріалів зберігається протягом 30 календарних днів, після чого тимчасово призупиняється.</p>
+                    <p data-translate="access-info-3">Доступ може бути відновлений після відновлення занять.</p>
+                    <p data-translate="access-info-4">Самостійне використання матеріалів без супроводу фахівця не рекомендується і не може розглядатися як терапія.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Trust Badges -->
     <div class="trust-badges">
         <div class="trust-badge">
@@ -2043,9 +2151,9 @@
             
             <div class="copyright">
                 <p><span data-translate="footer-copyright"> 2024 БЕРЕГИНЯ. Всі права захищені.</span></p>
-                <a class="Footer__item--Zvl" href="https://bereginia.online/public-offer" target="_blank"><span data-translate="footer-offer">Договір оферти</span></a>
+                <a class="Footer__item--Zvl" href="oferta.html" target="_blank"><span data-translate="footer-offer">Договір оферти</span></a>
                 <span style="margin: 0 10px;">|</span>
-                <a class="Footer__item--Zvl" href="#" target="_blank"><span data-translate="footer-privacy">Політика конфіденційності</span></a>
+                <a class="Footer__item--Zvl" href="politika.html" target="_blank"><span data-translate="footer-privacy">Політика конфіденційності</span></a>
             </div>
         </div>
     </footer>
@@ -2222,7 +2330,14 @@
                 'footer-hours': 'Пн-Пт: 9:00-20:00, Сб: 10:00-18:00',
                 'footer-copyright': ' 2024 БЕРЕГИНЯ. Всі права захищені.',
                 'footer-offer': 'Договір оферти',
-                'footer-privacy': 'Політика конфіденційності'
+                'footer-privacy': 'Політика конфіденційності',
+                
+                // Access Information
+                'access-info-title': 'Умови доступу до матеріалів',
+                'access-info-1': 'Всі матеріали надаються виключно в рамках активного терапевтичного супроводу.',
+                'access-info-2': 'У разі припинення онлайн-занять з терапевтом доступ до матеріалів зберігається протягом 30 календарних днів, після чого тимчасово призупиняється.',
+                'access-info-3': 'Доступ може бути відновлений після відновлення занять.',
+                'access-info-4': 'Самостійне використання матеріалів без супроводу фахівця не рекомендується і не може розглядатися як терапія.'
             },
             ru: {
                 // Навигация
@@ -2336,7 +2451,14 @@
                 'footer-hours': 'Пн-Пт: 9:00-20:00, Сб: 10:00-18:00',
                 'footer-copyright': ' 2024 БЕРЕГИНЯ. Все права защищены.',
                 'footer-offer': 'Договор оферты',
-                'footer-privacy': 'Политика конфиденциальности'
+                'footer-privacy': 'Политика конфиденциальности',
+                
+                // Access Information
+                'access-info-title': 'Условия доступа к материалам',
+                'access-info-1': 'Все материалы предоставляются исключительно в рамках активного терапевтического сопровождения.',
+                'access-info-2': 'В случае прекращения онлайн-занятий с терапевтом доступ к материалам сохраняется в течение 30 календарных дней, после чего временно приостанавливается.',
+                'access-info-3': 'Доступ может быть восстановлен после возобновления занятий.',
+                'access-info-4': 'Самостоятельное использование материалов без сопровождения специалиста не рекомендуется и не может рассматриваться как терапия.'
             }
         };
 
