@@ -1362,119 +1362,10 @@
     </style>
 </head>
 
-<canvas id="snowCanvas"></canvas>
 
-<script>
-// ============ СНЕГОПАД НА CANVAS ============
-(function() {
-    let canvas = document.getElementById('snowCanvas');
-    if (!canvas) {
-        canvas = document.createElement('canvas');
-        canvas.id = 'snowCanvas';
-        canvas.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9999;';
-        document.body.appendChild(canvas);
-    }
-    
-    const ctx = canvas.getContext('2d');
-    let snowflakes = [];
-    let animationId;
-    
-    function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-    
-    class Snowflake {
-        constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 3 + 1;
-            this.speed = Math.random() * 1 + 0.5;
-            this.wind = Math.random() * 0.3 - 0.15;
-            this.opacity = Math.random() * 0.6 + 0.2;
-            this.wobble = Math.random() * 0.5;
-            this.wobbleSpeed = Math.random() * 0.05 + 0.02;
-            this.wobbleX = 0;
-        }
-        
-        update() {
-            this.y += this.speed;
-            this.x += this.wind;
-            this.wobbleX = Math.sin(Date.now() * this.wobbleSpeed) * this.wobble;
-            
-            if (this.y > canvas.height) {
-                this.y = -5;
-                this.x = Math.random() * canvas.width;
-            }
-            
-            if (this.x > canvas.width + 10) this.x = -10;
-            if (this.x < -10) this.x = canvas.width + 10;
-        }
-        
-        draw() {
-            ctx.beginPath();
-            const drawX = this.x + this.wobbleX;
-            ctx.arc(drawX, this.y, this.size, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
-            ctx.fill();
-            ctx.closePath();
-            
-            if (this.size > 2) {
-                ctx.beginPath();
-                ctx.arc(drawX, this.y, this.size * 1.5, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity * 0.3})`;
-                ctx.fill();
-                ctx.closePath();
-            }
-        }
-    }
-    
-    function initSnowflakes() {
-        snowflakes = [];
-        const count = window.innerWidth < 768 ? 60 : 100;
-        
-        for (let i = 0; i < count; i++) {
-            snowflakes.push(new Snowflake());
-        }
-    }
-    
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        snowflakes.forEach(flake => {
-            flake.update();
-            flake.draw();
-        });
-        
-        animationId = requestAnimationFrame(animate);
-    }
-    
-    function startSnow() {
-        resizeCanvas();
-        initSnowflakes();
-        animate();
-    }
-    
-    function stopSnow() {
-        if (animationId) {
-            cancelAnimationFrame(animationId);
-        }
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-    }
-    
-    window.addEventListener('resize', function() {
-        resizeCanvas();
-        initSnowflakes();
-    });
-    
-    document.addEventListener('DOMContentLoaded', startSnow);
-    
-    window.snowfall = {
-        start: startSnow,
-        stop: stopSnow
-    };
-})();
-</script>
+
+
+
 
 <body>
     <!-- Header с бургер меню -->
@@ -1717,10 +1608,19 @@
                 
                 // Hero секция
                 'hero-title': 'Іван Газін',
-                'hero-subtitle': 'Провідний спеціаліст і засновник центру з порушень опорно-рухового апарату у дітей та дорослих Preventive Medicine Clinic «БЕРЕГИНЯ»',
-                'stat-years': 'років досвіду',
-                'stat-patients': 'пацієнтів',
-                'stat-results': 'позитивних результатів',
+                'hero-subtitle': 'Магістр фізичної терапії',
+                'hero-subtitle2': 'Фізичний терапевт, шрот-терапевт',
+                'hero-description': 'Медична освіта: фельдшер (парамедик)',
+                'hero-description2': 'Засновник Preventive Medicine Clinic «БЕРЕГИНЯ» — центру відновлювальної медицини, фізичної терапії та нутриціології для дітей та дорослих.',
+                'hero-description3': 'Спеціалізується на корекції порушень постави та інших порушень опорно-рухового апарату у дітей і дорослих, зокрема:',
+                'hero-description4': ' • вальгусної деформації;',
+                'hero-description5': ' • сколіозу та функціональних деформацій хребта;',
+                'hero-description6': ' • плоскостопості;',
+                'hero-description7': ' • хронічних больових синдромів.',
+                'hero-description8': 'Також працює з пацієнтами при:',
+                'hero-description9': ' • міжхребцевих грижах та протрузіях;',
+                'hero-description10': ' • артрозі, артриті;',
+                'hero-description11': ' • дегенеративно-дистрофічних змінах хребта та суглобів (у межах фізичної терапії та реабілітації).',
                 
                 // Специализации
                 'specialties-title': 'Спеціалізації',
@@ -1745,7 +1645,7 @@
                 'diseases-title': 'Які захворювання ми лікуємо',
                 'disease-scoliosis': 'Сколіоз та порушення постави',
                 'disease-scoliosis-1': 'Сколіоз 1-3 ступеня',
-                'disease-kyphosis': 'Кифоз/лордоз',
+                'disease-kyphosis': 'Кіфоз/лордоз',
                 'disease-flat-valgus': 'Плоско-вальгусні стопи',
                 'disease-clubfoot': 'Косолапість',
                 'disease-flat-feet': 'Плоскостопість',
@@ -1829,7 +1729,7 @@
                 'reviews-read-all': 'Читати всі відгуки',
                 
                 // Footer
-                'footer-description': 'Центр відновлювальної медицини та нутриціології. Професійна допомога дітям з порушеннями опорно-рухового апарату з 2012 року.',
+                'footer-description': 'Центр відновлювальної медицини, фізичної терапії та нутриціології.\n\nПрофесійна допомога дітям і дорослим із порушеннями опорно-рухового апарату з 2016 року.',
                 'footer-nav-title': 'Навігація',
                 'footer-contacts-title': 'Контакти',
                 'footer-address': 'вулиця Чернишевського, 26, Ізмаїл, Одеська область, 68601',
@@ -1854,10 +1754,18 @@
                 
                 // Hero секция
                 'hero-title': 'Иван Газин',
-                'hero-subtitle': 'Ведущий специалист и основатель центра нарушений опорно-двигательного аппарата у детей и взрослых Preventive Medicine Clinic «БЕРЕГИНЯ»',
-                'stat-years': 'лет опыта',
-                'stat-patients': 'пациентов',
-                'stat-results': 'положительных результатов',
+                'hero-subtitle': 'Магистр физической терапии',
+                'hero-subtitle2': 'Физический терапевт, шрот-терапевт',
+                'hero-description': 'Основатель Preventive Medicine Clinic «БЕРЕГИНЯ» — центра восстановительной медицины, физической терапии и нутрициологии для детей и взрослых.',
+                'hero-description3': 'Специализируется на коррекции нарушений осанки и других нарушений опорно-двигательного аппарата у детей и взрослых, в частности:',
+                'hero-description4': ' • вальгусной деформации;',
+                'hero-description5': ' • сколиоза и функциональных деформаций позвоночника;',
+                'hero-description6': ' • плоскостопия;',
+                'hero-description7': ' • хронических болевых синдромов.',
+                'hero-description8': 'Также работает с пациентами при:',
+                'hero-description9': ' • межпозвонковых грыжах и протрузиях;',
+                'hero-description10': ' • артрозе, артрите;',
+                'hero-description11': ' • дегенеративно-дистрофических изменениях позвоночника и суставов (в рамках физической терапии и реабилитации).',
                 
                 // Специализации
                 'specialties-title': 'Специализации',
@@ -1968,7 +1876,7 @@
                 'review-1-text': 'Добрый вечер. Очень хороший результат, устранили сутулость в 18 лет за 3 месяца курса!',
                 
                 // Footer
-                'footer-description': 'Центр восстановительной медицины и нутрициологии. Профессиональная помощь детям с нарушениями опорно-двигательного аппарата с 2012 года.',
+                'footer-description': 'Центр восстановительной медицины, физической терапии и нутрициологии.\n\nПрофессиональная помощь детям и взрослым с нарушениями опорно-двигательного аппарата с 2016 года.',
                 'footer-nav-title': 'Навигация',
                 'footer-contacts-title': 'Контакты',
                 'footer-address': 'улица Чернышевского, 26, Измаил, Одесская область, 68601',
@@ -2039,9 +1947,29 @@
             </div>
             
             <div class="hero-content">
-                <h1 class="hero-title" data-translate="hero-title">Іван Газін</h1>
+                <h1 class="hero-title" data-translate="hero-title">ІВАН ГАЗІН</h1>
                 
-                <h2 class="hero-subtitle" data-translate="hero-subtitle">Провідний спеціаліст і засновник центру з порушень опорно-рухового апарату у дітей та дорослих Preventive Medicine Clinic «БЕРЕГИНЯ»</h2>
+                <h3 class="hero-subtitle" data-translate="hero-subtitle">Магістр фізичної терапії</h3>
+                <h3 class="hero-subtitle" data-translate="hero-subtitle2">Фізичний терапевт, шрот-терапевт</h3>
+                
+                <div class="hero-description">
+                    <p data-translate="hero-description">Медична освіта: фельдшер (парамедик)</p>
+                    <p data-translate="hero-description2">Засновник <strong>Preventive Medicine Clinic «БЕРЕГИНЯ»</strong> — центру відновлювальної медицини, фізичної терапії та нутриціології для дітей та дорослих.</p>
+                    <br>
+                    <p data-translate="hero-description3"><strong>Спеціалізується на корекції порушень постави та інших порушень опорно-рухового апарату у дітей і дорослих, зокрема:</strong></p>
+                    <p data-translate="hero-description4"> • вальгусної деформації;</p>
+                    <p data-translate="hero-description5"> • сколіозу та функціональних деформацій хребта;</p>
+                    <p data-translate="hero-description6"> • плоскостопості;</p>
+                    <p data-translate="hero-description7"> • хронічних больових синдромів.</p>
+                    <br>
+                    <p data-translate="hero-description8"><strong>Також працює з пацієнтами при:</strong></p>
+                    <p data-translate="hero-description9"> • міжхребцевих грижах та протрузіях;</p>
+                    <p data-translate="hero-description10"> • артрозі, артриті;</p>
+                    <p data-translate="hero-description11"> • дегенеративно-дистрофічних змінах хребта та суглобів (у межах фізичної терапії та реабілітації).</p>
+                    <br>
+    
+                
+                </div>
                 
                 <div class="hero-stats">
                     <div class="stat-item">
@@ -2451,7 +2379,9 @@
                         <i class="fas fa-hands-helping"></i>
                         <span>БЕРЕГИНЯ</span>
                     </div>
-                    <p data-translate="footer-description">Центр відновлювальної медицини та нутриціології. Професійна допомога дітям з порушеннями опорно-рухового апарату з 2012 року.</p>
+                    <p data-translate="footer-description">Центр відновлювальної медицини, фізичної терапії та нутриціології.
+
+Професійна допомога дітям і дорослим із порушеннями опорно-рухового апарату з 2016 року.</p>
                 </div>
                 
                 <div class="footer-links">
