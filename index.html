@@ -6,10 +6,8 @@
     
     <!-- ① ПЕРВЫМ делом — блокирующий скрипт языка. До любых стилей и шрифтов! -->
     <script>
-    // ═══════════════════════════════════════════════════════
-    //  ZERO-FLICKER LANGUAGE BOOTSTRAP
-    //  Место: самый первый <script> в <head>, ДО всех стилей
-    // ═══════════════════════════════════════════════════════
+    // ZERO-FLICKER LANGUAGE BOOTSTRAP
+    // Место: самый первый <script> в <head>, ДО всех стилей
     (function() {
         var lang = localStorage.getItem('selectedLanguage') || 'uk';
         
@@ -38,9 +36,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-    /* ═══════════════════════════════════════
-       DESIGN TOKENS
-    ═══════════════════════════════════════ */
+    /* DESIGN TOKENS */
     :root {
         --blue:       #0057b7;
         --blue-dark:  #003d82;
@@ -72,9 +68,7 @@
         --t:          .3s;
     }
 
-    /* ═══════════════════════════════════════
-       RESET
-    ═══════════════════════════════════════ */
+    /* RESET */
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior:smooth; font-size:16px; }
     body {
@@ -102,24 +96,13 @@
         max-width: 100vw;
         width: 100%;
     }
-    .container {
-        max-width: 100%;
-        overflow-x: clip;
-        width: 100%;
-    }
-    section {
-        overflow-x: clip;
-        width: 100%;
-    }
     .diseases-section .container {
         width: 100% !important;
         max-width: 100% !important;
         overflow-x: clip !important;
     }
 
-    /* ═══════════════════════════════════════
-       TYPOGRAPHY
-    ═══════════════════════════════════════ */
+    /* TYPOGRAPHY */
     h1,h2,h3,h4,h5 {
         font-family:'Montserrat', sans-serif;
         line-height:1.2;
@@ -147,9 +130,7 @@
         overflow-x: clip;
     }
 
-    /* ═══════════════════════════════════════
-       SCROLL ANIMATIONS SETUP
-    ═══════════════════════════════════════ */
+    /* SCROLL ANIMATIONS SETUP */
     .reveal {
         opacity:0;
         transform:translateY(40px);
@@ -177,9 +158,7 @@
     .reveal-delay-4 { transition-delay:.4s; }
     .reveal-delay-5 { transition-delay:.5s; }
 
-    /* ═══════════════════════════════════════
-       HEADER
-    ═══════════════════════════════════════ */
+    /* HEADER */
     .main-header {
         position:fixed;
         top:0; left:0; right:0;
@@ -434,9 +413,7 @@
     }
     .menu-overlay.active { opacity:1; visibility:visible; }
 
-    /* ═══════════════════════════════════════
-       HERO
-    ═══════════════════════════════════════ */
+    /* HERO */
     .hero-section {
         min-height:100vh;
         background:linear-gradient(160deg, #0f3e79 0%, #1a5298 50%, #0c3268 100%);
@@ -696,9 +673,7 @@
         50% { transform:translateY(-8px); }
     }
 
-    /* ═══════════════════════════════════════
-       SPECIALTIES STRIP
-    ═══════════════════════════════════════ */
+    /* SPECIALTIES STRIP */
     .specialties-section {
         padding:60px 0;
         background:var(--white);
@@ -756,9 +731,7 @@
         line-height:1.3;
     }
 
-    /* ═══════════════════════════════════════
-       SECTION COMMONS
-    ═══════════════════════════════════════ */
+    /* SECTION COMMONS */
     .section-header {
         text-align:center;
         margin-bottom:3.5rem;
@@ -772,9 +745,7 @@
         margin:0 auto;
     }
 
-    /* ═══════════════════════════════════════
-       AWARDS SECTION — 3D PLACEHOLDER
-    ═══════════════════════════════════════ */
+    /* AWARDS SECTION — 3D PLACEHOLDER */
     .awards-section {
         padding:80px 0;
         position:relative;
@@ -812,16 +783,7 @@
             radial-gradient(ellipse 50% 70% at 80% 30%, rgba(26,188,156,.15) 0%, transparent 60%);
     }
     .awards-3d-bg::after {
-        content:'3D ANIMATION ZONE';
-        position:absolute;
-        top:50%; left:50%;
-        transform:translate(-50%,-50%);
-        font-family:'Montserrat',sans-serif;
-        font-size:.65rem; font-weight:700;
-        letter-spacing:.3em;
-        color:rgba(255,255,255,.06);
-        white-space:nowrap;
-        pointer-events:none;
+        display:none;
     }
     /* ─── END 3D ZONE ─── */
 
@@ -888,9 +850,7 @@
     }
     .award-card p { font-size:.8rem; color:rgba(255,255,255,.45); margin:0; }
 
-    /* ═══════════════════════════════════════
-       DISEASES SECTION — 3D PLACEHOLDER
-    ═══════════════════════════════════════ */
+    /* DISEASES SECTION — 3D PLACEHOLDER */
     .diseases-section {
         /* 16:9 height — 3D animation fits exactly inside */
         padding:0;
@@ -926,17 +886,7 @@
             radial-gradient(ellipse 40% 60% at 10% 30%, rgba(26,188,156,.06) 0%, transparent 60%);
     }
     .diseases-3d-bg::after {
-        content:'3D ANIMATION ZONE';
-        position:absolute;
-        top:50%; right:5%;
-        transform:translateY(-50%);
-        font-family:'Montserrat',sans-serif;
-        font-size:.65rem; font-weight:700;
-        letter-spacing:.3em;
-        color:rgba(0,87,183,.06);
-        white-space:nowrap;
-        writing-mode:vertical-rl;
-        pointer-events:none;
+        display:none;
     }
     /* ─── END 3D ZONE ─── */
 
@@ -1005,9 +955,7 @@
         opacity:.5;
     }
 
-    /* ═══════════════════════════════════════
-       DIAGNOSTICS SECTION
-    ═══════════════════════════════════════ */
+    /* DIAGNOSTICS SECTION */
     .diagnostics-section {
         padding:100px 0;
         background:var(--white);
@@ -1211,9 +1159,7 @@
         font-size:.88rem; color:var(--muted); margin:0;
     }
 
-    /* ═══════════════════════════════════════
-       APPOINTMENT SECTION
-    ═══════════════════════════════════════ */
+    /* APPOINTMENT SECTION */
     .appointment-section {
         padding:100px 0;
         background:var(--surface);
@@ -1372,9 +1318,7 @@
     .btn-subtitle { display:block; font-size:.72rem; opacity:.7; }
     .btn-arrow { font-size:1rem; opacity:.8; }
 
-    /* ═══════════════════════════════════════
-       REVIEWS SECTION
-    ═══════════════════════════════════════ */
+    /* REVIEWS SECTION */
     .reviews-section {
         padding:100px 0;
         background:var(--white);
@@ -1384,7 +1328,6 @@
         display:grid;
         grid-template-columns:repeat(3, 1fr);
         gap:20px;
-        margin-left:-100px;
     }
     @media (max-width:900px) {
         .reviews-container { grid-template-columns:1fr; margin-left:0; }
@@ -1474,9 +1417,7 @@
         transform:translateY(-2px);
     }
 
-    /* ═══════════════════════════════════════
-       FOOTER
-    ═══════════════════════════════════════ */
+    /* FOOTER */
     .main-footer {
         background:var(--ink);
         color:rgba(255,255,255,.8);
@@ -1562,9 +1503,7 @@
     }
     .Footer__item--Zvl:hover { color:rgba(255,255,255,.7); }
 
-    /* ═══════════════════════════════════════
-       RESPONSIVE
-    ═══════════════════════════════════════ */
+    /* RESPONSIVE */
     @media (max-width:1024px) {
         .nav-menu { display:none; }
         .header-cta .btn-header { display:none; }
@@ -1583,10 +1522,10 @@
         .footer-content { grid-template-columns:1fr 1fr; }
     }
     @media (max-width:900px) {
-        .reviews-container { grid-template-columns:1fr; margin-left:0; }
         .specialties-grid { grid-template-columns:1fr; }
     }
-    @media (max-width:768px) {
+
+        @media (max-width:768px) {
         .diagnostics-steps { grid-template-columns:1fr 1fr; }
         .diagnostics-steps .step::after { display:none; }
         .diagnostics-features { grid-template-columns:repeat(2,1fr); }
@@ -1596,16 +1535,6 @@
         .reviews-container { margin-left:0 !important; }
         .footer-content { grid-template-columns:1fr; gap:32px; }
         .copyright { flex-direction:column; text-align:center; }
-
-        /* ── Анимация осанки на мобильном: полностью скрыта ───────────
-           На телефоне canvas как фон длинной секции выглядит как
-           случайная картинка посреди контента — смысла нет.
-           Секция возвращается к чистому белому фону.               */
-        .diag-video-bg,
-        #postureCanvas,
-        .diag-video-overlay {
-            display: none !important;
-        }
         .diagnostics-section {
             background: var(--white) !important;
         }
@@ -1614,7 +1543,6 @@
     }
     @media (max-width:482px) {
         .specialties-grid { grid-template-columns:1fr !important; }
-        .reviews-container { margin-left:0 !important; }
         .diagnostics-features { grid-template-columns:1fr !important; }
     }
     @media (max-width:480px) {
@@ -1882,7 +1810,6 @@
                 'award-order':'Награждён орденом',
                 'award-order-desc':'Медицинская слава Украины',
                 'diseases-title':'Какие заболевания мы корректируем',
-                'disease-scoliosis':'Сколиоз и нарушения осанки',
                 'disease-scoliosis-1':'Сколиоз 1–3 степени',
                 'disease-kyphosis':'Кифоз / лордоз',
                 'disease-flat-valgus':'Плоско-вальгусные стопы',
@@ -1920,9 +1847,7 @@
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════
-     HEADER
-═══════════════════════════════════════ -->
+<!-- HEADER -->
 <header class="main-header header-visible scrolled" id="mainHeader">
     <div class="container header-container">
         <a href="index.html" class="logo">
@@ -1990,9 +1915,7 @@
 </header>
 
 
-<!-- ═══════════════════════════════════════
-     HERO
-═══════════════════════════════════════ -->
+<!-- HERO -->
 <section class="hero-section" id="home">
     <div class="container hero-container">
         <!-- LEFT: Content -->
@@ -2066,9 +1989,7 @@
 </section>
 
 
-<!-- ═══════════════════════════════════════
-     SPECIALTIES
-═══════════════════════════════════════ -->
+<!-- SPECIALTIES -->
 <section class="specialties-section">
     <div class="container">
         <div class="specialties-grid">
@@ -2089,21 +2010,13 @@
 </section>
 
 
-<!-- ═══════════════════════════════════════
-     AWARDS — 3D BG PLACEHOLDER
-═══════════════════════════════════════ -->
+<!-- AWARDS -->
 <section class="awards-section" id="awards">
 
-    <!-- ╔══════════════════════════════════════════════╗
-         ║         3D SCROLL ASSET BACKGROUND          ║
-         ║  Place your WebGL/video/canvas 3D here.     ║
-         ║  This div fills the entire section.         ║
-         ╚══════════════════════════════════════════════╝ -->
     <div class="awards-3d-bg" id="awards3dBg">
         <!-- DROP 3D ASSET HERE -->
     </div>
     <div class="awards-overlay"></div>
-    <!-- ════════════════════════════════════════════════ -->
 
     <div class="container">
         <div class="section-header reveal">
@@ -2137,22 +2050,12 @@
     </div>
 </section>
 
-
-<!-- ═══════════════════════════════════════
-     DISEASES — 3D BG PLACEHOLDER
-═══════════════════════════════════════ -->
+<!-- DISEASES -->
 <section class="diseases-section" id="diseases">
-
-    <!-- ╔══════════════════════════════════════════════╗
-         ║         3D SCROLL ASSET BACKGROUND          ║
-         ║  Place your WebGL/video/canvas 3D here.     ║
-         ║  This div fills the entire section.         ║
-         ╚══════════════════════════════════════════════╝ -->
     <div class="diseases-3d-bg" id="diseases3dBg">
         <!-- DROP 3D ASSET HERE -->
     </div>
     <div class="diseases-overlay"></div>
-    <!-- ════════════════════════════════════════════════ -->
 
     <div class="container">
         <div class="section-header reveal">
@@ -2196,13 +2099,8 @@
     </div>
 </section>
 
-
-<!-- ═══════════════════════════════════════
-     DIAGNOSTICS
-═══════════════════════════════════════ -->
+<!-- DIAGNOSTICS -->
 <section class="diagnostics-section" id="diagnostics">
-
-    <!-- Scroll-scrubbed posture animation: bad posture → perfect posture -->
     <div class="diag-video-bg">
         <video id="postureVideo" muted preload="auto" playsinline>
             <source src="Video Project 10.mp4" type="video/mp4">
@@ -2303,10 +2201,7 @@
     </div>
 </section>
 
-
-<!-- ═══════════════════════════════════════
-     APPOINTMENT
-═══════════════════════════════════════ -->
+<!-- APPOINTMENT -->
 <section class="appointment-section" id="appointment">
     <div class="container">
         <div class="appointment-container">
@@ -2402,10 +2297,7 @@
     </div>
 </section>
 
-
-<!-- ═══════════════════════════════════════
-     REVIEWS
-═══════════════════════════════════════ -->
+<!-- REVIEWS -->
 <section class="reviews-section" id="reviews">
     <div class="container">
         <div class="section-header reveal">
@@ -2414,7 +2306,8 @@
             <p data-translate="reviews-subtitle">Реальні результати та задоволені пацієнти</p>
         </div>
 
-        <div class="reviews-container"><div class="review-card reveal">
+        <div class="reviews-container">
+            <div class="review-card reveal">
                 <div class="review-header">
                     <div class="reviewer-info">
                         <div class="reviewer-avatar"><i class="fas fa-user-circle"></i></div>
@@ -2434,7 +2327,8 @@
                 <div class="review-images">
                     <img src="images/reviews/27.png" alt="Сколіотична постава — результат за 14 занять" loading="lazy">
                 </div>
-            </div><div class="review-card reveal reveal-delay-1">
+            </div>
+            <div class="review-card reveal reveal-delay-1">
                 <div class="review-header">
                     <div class="reviewer-info">
                         <div class="reviewer-avatar" style="background:linear-gradient(135deg,#1abc9c,#16a085)"><i class="fas fa-user-circle"></i></div>
@@ -2454,7 +2348,8 @@
                 <div class="review-images">
                     <img src="images/reviews/29.png" alt="Сколіоз та вальгус — результат лікування" loading="lazy">
                 </div>
-            </div><div class="review-card reveal reveal-delay-2">
+            </div>
+            <div class="review-card reveal reveal-delay-2">
                 <div class="review-header">
                     <div class="reviewer-info">
                         <div class="reviewer-avatar" style="background:linear-gradient(135deg,#e8b84b,#d4a017)"><i class="fas fa-user-circle"></i></div>
@@ -2486,10 +2381,7 @@
     </div>
 </section>
 
-
-<!-- ═══════════════════════════════════════
-     FOOTER
-═══════════════════════════════════════ -->
+<!-- FOOTER -->
 <footer class="main-footer">
     <div class="container">
         <div class="footer-content">
@@ -2525,7 +2417,7 @@
         </div>
 
         <div class="copyright">
-            <span data-translate="footer-copyright">© 2026 БЕРЕГИНЯ. Всі права захищені.</span>
+            <span data-translate="footer-copyright"> 2026 БЕРЕГИНЯ. Всі права захищені.</span>
             <div class="copyright-links">
                 <a class="Footer__item--Zvl" href="oferta.html" target="_blank" data-translate="footer-offer">Договір оферти</a>
                 <a class="Footer__item--Zvl" href="politika.html" target="_blank" data-translate="footer-privacy">Політика конфіденційності</a>
@@ -2534,10 +2426,7 @@
     </div>
 </footer>
 
-
-<!-- ═══════════════════════════════════════
-     SCRIPTS
-═══════════════════════════════════════ -->
+<!-- SCRIPTS -->
 <script>
 (function() {
     // ─── LANGUAGE ───
@@ -2560,8 +2449,6 @@
         updateHeaderToggle(lang);
         createLangButtons(lang);
 
-        const reviewsContainer = document.querySelector('.reviews-container');
-        if (reviewsContainer) reviewsContainer.style.marginLeft = '-100px';
     }
 
     function updateHeaderToggle(lang) {
@@ -2639,13 +2526,6 @@
 
     // ─── ACCORDION ───
     document.addEventListener('DOMContentLoaded', () => {
-        // Set reviews container margin
-        const reviewsContainer = document.querySelector('.reviews-container');
-        if (reviewsContainer) {
-            reviewsContainer.style.marginLeft = '-100px';
-        }
-
-        // Accordion
         document.querySelectorAll('details.consultation-accordion').forEach(details => {
             const summary = details.querySelector('summary');
             const wrapper = details.querySelector('.accordion-anim');
