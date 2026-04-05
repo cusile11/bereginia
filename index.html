@@ -83,7 +83,7 @@
         background: var(--white);
         line-height:1.7;
         -webkit-font-smoothing:antialiased;
-        overflow-x:hidden;
+        overflow-x:clip;
     }
     img { max-width:100%; height:auto; display:block; }
     a { color:inherit; text-decoration:none; }
@@ -93,13 +93,28 @@
     *, *::before, *::after {
         box-sizing: border-box;
     }
-    html, body {
-        overflow-x: hidden;
-        max-width: 100%;
+    html {
+        overflow-x: clip;
+        width: 100%;
+    }
+    body {
+        overflow-x: clip;
+        max-width: 100vw;
+        width: 100%;
     }
     .container {
         max-width: 100%;
-        overflow-x: hidden;
+        overflow-x: clip;
+        width: 100%;
+    }
+    section {
+        overflow-x: clip;
+        width: 100%;
+    }
+    .diseases-section .container {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: clip !important;
     }
 
     /* ═══════════════════════════════════════
@@ -128,6 +143,8 @@
         max-width:1180px;
         margin:0 auto;
         padding:0 24px;
+        width: 100%;
+        overflow-x: clip;
     }
 
     /* ═══════════════════════════════════════
@@ -691,6 +708,7 @@
         display:grid;
         grid-template-columns:repeat(3,1fr);
         gap:16px;
+        margin-top:2rem;
     }
     .specialty-card {
         background:var(--surface);
@@ -933,8 +951,9 @@
 
     .diseases-list {
         display:grid;
-        grid-template-columns:repeat(3,1fr);
+        grid-template-columns:repeat(3, 320px);
         gap:20px;
+        justify-content: center;
         position:relative; z-index:2;
     }
     .disease-category {
@@ -1359,6 +1378,7 @@
     .reviews-section {
         padding:100px 0;
         background:var(--white);
+        overflow-x: clip;
     }
     .reviews-container {
         display:grid;
@@ -1558,7 +1578,7 @@
         .hero-image-wrap img { max-width:260px; border-radius:var(--radius-lg); }
         .hero-cert-badge { display:none; }
         .awards-grid { grid-template-columns:repeat(2,1fr); }
-        .diseases-list { grid-template-columns:repeat(2,1fr); }
+        .diseases-list { grid-template-columns:1fr; }
         .specialties-grid { grid-template-columns:1fr; }
         .footer-content { grid-template-columns:1fr 1fr; }
     }
@@ -1684,6 +1704,24 @@
                 'hero-badge':'Єдиний сертифікований Schroth-спеціаліст на Півдні України',
                 'diseases-label':'Напрями роботи',
                 'diseases-subtitle':'Комплексний підхід до відновлення опорно-рухового апарату у дітей та дорослих',
+                'disease-scoliosis':'Сколіоз та порушення постави',
+                'disease-development':'Порушення розвитку',
+                'disease-adult-posture':'Корекція постави у дорослих',
+                'disease-scoliosis-1':'Сколіоз 1–3 ступеня',
+                'disease-kyphosis':'Кіфоз / лордоз',
+                'disease-flat-valgus':'Плоско-вальгусні стопи',
+                'disease-clubfoot':'Косолапість',
+                'disease-flat-feet':'Плоскостопість',
+                'disease-other':'Інші захворювання ОДА',
+                'disease-dysplasia':'Дисплазія тазостегнових суглобів',
+                'disease-delay':'Затримка моторного розвитку',
+                'disease-dystrophy':'М\'язова дистрофія',
+                'disease-coordination':'Порушення координації',
+                'disease-back-pain':'Болі в спині',
+                'disease-headache':'Головні болі',
+                'disease-hernia':'Міжхребцеві грижі та протрузії',
+                'disease-arthritis':'Артроз, артрит',
+                'disease-etc':'Та інше',
                 'navHome':'Іван Газін', 'navCourse':'Онлайн-курс', 'navReviews':'Відгуки',
                 'hero-title':'ІВАН ГАЗІН',
                 'hero-subtitle':'Магістр фізичної терапії',
@@ -1802,6 +1840,24 @@
                 'hero-badge':'Единичный сертифицированный Schroth-специалист на Юге Украины',
                 'diseases-label':'Направления работы',
                 'diseases-subtitle':'Комплексный подход к восстановлению опорно-двигательного аппарата у детей и взрослых',
+                'disease-scoliosis':'Сколиоз и нарушения осанки',
+                'disease-development':'Нарушения развития',
+                'disease-adult-posture':'Коррекция осанки у взрослых',
+                'disease-scoliosis-1':'Сколиоз 1–3 степени',
+                'disease-kyphosis':'Кифоз / лордоз',
+                'disease-flat-valgus':'Плоско-вальгусные стопы',
+                'disease-clubfoot':'Косолапость',
+                'disease-flat-feet':'Плоскостопие',
+                'disease-other':'Другие заболевания ОДА',
+                'disease-dysplasia':'Дисплазия тазобедренных суставов',
+                'disease-delay':'Задержка моторного развития',
+                'disease-dystrophy':'Мышечная дистрофия',
+                'disease-coordination':'Нарушение координации',
+                'disease-back-pain':'Боли в спине',
+                'disease-headache':'Головные боли',
+                'disease-hernia':'Межпозвоночные грыжи и протрузии',
+                'disease-arthritis':'Артроз, артрит',
+                'disease-etc':'И другое',
                 'hero-title':'ИВАН ГАЗИН',
                 'hero-subtitle':'Магистр физической терапии',
                 'hero-subtitle2':'Физический терапевт, шрот-терапевт',
@@ -2114,7 +2170,7 @@
                     <li data-translate="disease-flat-valgus">Плоско-вальгусні стопи</li>
                     <li data-translate="disease-clubfoot">Косолапість</li>
                     <li data-translate="disease-flat-feet">Плоскостопість</li>
-                    <li data-translate="disease-other">Та інші захворювання ОРА</li>
+                    <li data-translate="disease-other">Інші захворювання ОДА</li>
                 </ul>
             </div>
             <div class="disease-category reveal reveal-delay-1">
@@ -2131,9 +2187,9 @@
                 <ul>
                     <li data-translate="disease-back-pain">Болі в спині</li>
                     <li data-translate="disease-headache">Головні болі</li>
-                    <li>Міжхребцеві грижі та протрузії</li>
-                    <li>Артроз, артрит</li>
-                    <li data-translate="disease-other-pain">Та інше</li>
+                    <li data-translate="disease-hernia">Міжхребцеві грижі та протрузії</li>
+                    <li data-translate="disease-arthritis">Артроз, артрит</li>
+                    <li data-translate="disease-etc">Та інше</li>
                 </ul>
             </div>
         </div>
