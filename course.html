@@ -11,10 +11,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
-        // Set language immediately before page renders
-        const savedLang = localStorage.getItem('selectedLanguage') || 'uk';
-        document.documentElement.lang = savedLang;
-    </script>
+    // ZERO-FLICKER LANGUAGE BOOTSTRAP
+    // Место: самый первый <script> в <head>, ДО всех стилей
+    (function() {
+        var lang = localStorage.getItem('selectedLanguage') || 'uk';
+        
+        // 1. Устанавливаем lang-атрибут синхронно
+        document.documentElement.setAttribute('lang', lang);
+        
+        // 2. Применяем перевод сразу в DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', function() {
+            if (lang !== 'uk' && window.translations) {
+                var t = window.translations[lang];
+                if (t) {
+                    document.querySelectorAll('[data-translate]').forEach(el => {
+                        var k = el.getAttribute('data-translate');
+                        if (t[k] !== undefined) el.textContent = t[k];
+                    });
+                }
+            }
+        });
+    })();
+</script>
     <style>
     :root {
         --blue:       #0057b7;
@@ -23,22 +41,27 @@
         --blue-light: #e8f1fc;
         --teal:       #1abc9c;
         --gold:       #e8b84b;
-        --ink:        #1a2235;
-        --ink-soft:   #3a4250;
-        --muted:      #6b7280;
-        --border:     #e2e8f0;
+        --ink:        #1e3a5c;
+        --ink-soft:   #334e6e;
+        --muted:      #6b7a8d;
+        --border:     #dce6f5;
         --surface:    #f8fafc;
         --white:      #ffffff;
+        --gradient:   linear-gradient(135deg, var(--blue) 0%, var(--blue-mid) 100%);
+        --gradient-2: linear-gradient(160deg, #0f3e79 0%, #1a5298 50%, #0c3268 100%);
+        --gradient-3: linear-gradient(135deg, #1a2235 0%, #2d3748 100%);
+        --gradient-4: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        --shadow-sm:  0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+        --shadow-md:  0 4px 16px rgba(0,0,0,.10), 0 2px 4px rgba(0,0,0,.06);
+        --shadow-lg:  0 10px 40px rgba(0,87,183,.14);
+        --shadow-xl:  0 20px 60px rgba(0,87,183,.18);
+        --ease:       cubic-bezier(.4,0,.2,1);
+        --ease-out:   cubic-bezier(0,.55,.45,1);
+        --t:          .3s;
         --radius-sm:  8px;
         --radius-md:  16px;
         --radius-lg:  24px;
         --radius-pill: 999px;
-        --shadow-sm:  0 1px 3px rgba(0,0,0,.08);
-        --shadow-md:  0 4px 16px rgba(0,0,0,.10);
-        --shadow-lg:  0 10px 40px rgba(0,87,183,.14);
-        --ease:       cubic-bezier(.4,0,.2,1);
-        --ease-out:   cubic-bezier(0,.55,.45,1);
-        --t:          .3s;
     }
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior:smooth; }
@@ -391,7 +414,7 @@
                     <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p1-f5">Telegram-чат підтримки 5 місяців</span></div>
                     <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p1-f6">Повторний огляд після курсу</span></div>
                 </div>
-                <a href="https://secure.wayforpay.com/button/b57ebd74e0e6b" target="_blank" class="btn-pricing" data-translate="btn-buy">Придбати курс</a>
+                <a href="https://secure.wayforpay.com/button/b9a2e30740578" target="_blank" class="btn-pricing" data-translate="btn-buy">Придбати курс</a>
             </div>
 
             <!-- Individual Premium -->
@@ -412,7 +435,7 @@
                     <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p2-f6">Контрольний огляд кожні 3 місяці</span></div>
                     <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p2-f7">Розбір рентгену через 6 місяців</span></div>
                 </div>
-                <a href="https://secure.wayforpay.com/button/b57ebd74e0e6b" target="_blank" class="btn-pricing" style="background:var(--gold);color:var(--ink);" data-translate="btn-buy">Придбати курс</a>
+                <a href="https://secure.wayforpay.com/button/bc2abe5c3756e" target="_blank" class="btn-pricing" style="background:var(--gold);color:var(--ink);" data-translate="btn-buy">Придбати курс</a>
             </div>
 
             <!-- Motor Correction Standard -->
@@ -431,7 +454,7 @@
                     <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p3-f4">Базовий план корекції</span></div>
                     <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p3-f5">Доступ до групи підтримки</span></div>
                 </div>
-                <a href="https://secure.wayforpay.com/button/b57ebd74e0e6b" target="_blank" class="btn-pricing teal" data-translate="btn-buy">Придбати курс</a>
+                <a href="https://secure.wayforpay.com/button/b41a29f70d917" target="_blank" class="btn-pricing teal" data-translate="btn-buy">Придбати курс</a>
             </div>
 
             <!-- Motor Correction Premium -->
@@ -451,7 +474,7 @@
                     <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p4-f5">Telegram-підтримка 6 місяців</span></div>
                     <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p4-f6">Контрольний огляд після курсу</span></div>
                 </div>
-                <a href="https://secure.wayforpay.com/button/b57ebd74e0e6b" target="_blank" class="btn-pricing teal" data-translate="btn-buy">Придбати курс</a>
+                <a href="https://secure.wayforpay.com/button/b5e8afffbd767" target="_blank" class="btn-pricing teal" data-translate="btn-buy">Придбати курс</a>
             </div>
 
         </div>
@@ -755,12 +778,13 @@
     burger.addEventListener('click', open);
     close.addEventListener('click', shut);
     overlay.addEventListener('click', shut);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') shut(); });
 
     // IntersectionObserver
     const io = new IntersectionObserver(entries => {
         entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
     }, {threshold:.08, rootMargin:'0px 0px -40px 0px'});
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => io.observe(el));
 
     // ── FAQ smooth animation ──
     document.querySelectorAll('.faq-item').forEach(details => {
