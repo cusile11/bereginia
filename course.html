@@ -21,14 +21,12 @@
         
         // 2. Применяем перевод сразу в DOMContentLoaded
         document.addEventListener('DOMContentLoaded', function() {
-            if (lang !== 'uk' && window.translations) {
-                var t = window.translations[lang];
-                if (t) {
-                    document.querySelectorAll('[data-translate]').forEach(el => {
-                        var k = el.getAttribute('data-translate');
-                        if (t[k] !== undefined) el.textContent = t[k];
-                    });
-                }
+            if (typeof window.T !== 'undefined' && lang !== 'uk' && window.T[lang]) {
+                var t = window.T[lang];
+                document.querySelectorAll('[data-translate]').forEach(el => {
+                    var k = el.getAttribute('data-translate');
+                    if (t[k] !== undefined) el.textContent = t[k];
+                });
             }
         });
     })();
@@ -368,7 +366,7 @@
         <div class="for-whom-grid">
             <div class="for-whom-card reveal">
                 <div class="for-whom-icon"><i class="fas fa-child"></i></div>
-                <h4 data-translate="fw1-title">Діти 3–18 років</h4>
+                <h4 data-translate="fw1-title">Діти та дорослі 2-60 років</h4>
                 <p data-translate="fw1-text">Вальгусна деформація стоп і колін, сколіоз, плоскостопість, порушення постави. Ігрові вправи адаптовані під вік.</p>
             </div>
             <div class="for-whom-card reveal reveal-delay-1">
@@ -399,20 +397,21 @@
 
             <!-- Individual Standard -->
             <div class="pricing-card featured reveal">
-                <div class="pricing-tag"><i class="fas fa-user"></i> <span data-translate="p1-tag">Індивідуально · Дорослі</span></div>
+                <div class="pricing-tag"><i class="fas fa-user"></i> <span data-translate="p1-tag">Індивідуально · Діти та дорослі</span></div>
                 <h3 data-translate="p1-name">Індивідуальний Стандарт</h3>
-                <p class="target" data-translate="p1-target">Для дорослих із порушеннями постави та ОРА</p>
+                <p class="target" data-translate="p1-target">Для дітей та доросли</p>
                 <div class="price-block">
                     <span class="price-main">14 900</span>
                     <span class="price-currency">₴</span>
                 </div>
                 <div class="pricing-features">
-                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p1-f1">12 індивідуальних занять з Іваном</span></div>
+                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p1-f1">12 індивідуальних занять</span></div>
                     <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p1-f2">5 місяців доступу до матеріалів</span></div>
-                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p1-f3">Відео-аналіз постави та стоп</span></div>
+                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p1-f3">Первинна онлайн-консультація</span></div>
                     <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p1-f4">Індивідуальна програма вправ</span></div>
-                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p1-f5">Telegram-чат підтримки 5 місяців</span></div>
-                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p1-f6">Повторний огляд після курсу</span></div>
+                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p1-f5">Telegram-чат підтримки</span></div>
+                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p1-f6">Повторна діагностика через 3 місяці</span></div>
+                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p1-f7">Індивідуальний план терапії</span></div>
                 </div>
                 <a href="https://secure.wayforpay.com/button/b9a2e30740578" target="_blank" class="btn-pricing" data-translate="btn-buy">Придбати курс</a>
             </div>
@@ -422,23 +421,6 @@
                 <div class="pricing-tag" style="background:#fff3cd;color:#8a6400;"><i class="fas fa-star"></i> <span data-translate="p2-tag">Індивідуально · Преміум</span></div>
                 <h3 data-translate="p2-name">Індивідуальний Преміум</h3>
                 <p class="target" data-translate="p2-target">Максимальний супровід для складних випадків</p>
-                <div class="price-block">
-                    <span class="price-main">17 900</span>
-                    <span class="price-currency">₴</span>
-                </div>
-                <div class="pricing-features">
-                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p2-f1">16 індивідуальних занять з Іваном</span></div>
-                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p2-f2">9 місяців доступу до матеріалів</span></div>
-                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p2-f3">Відео-аналіз + розбір рентгену</span></div>
-                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p2-f4">Розширена індивідуальна програма</span></div>
-                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p2-f5">Telegram-чат підтримки 9 місяців</span></div>
-                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p2-f6">Контрольний огляд кожні 3 місяці</span></div>
-                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p2-f7">Розбір рентгену через 6 місяців</span></div>
-                </div>
-                <a href="https://secure.wayforpay.com/button/bc2abe5c3756e" target="_blank" class="btn-pricing" style="background:var(--gold);color:var(--ink);" data-translate="btn-buy">Придбати курс</a>
-            </div>
-
-            <!-- Motor Correction Standard -->
             <div class="pricing-card premium-featured reveal">
                 <div class="pricing-tag" style="background:#e6faf6;color:#0d9a76;"><i class="fas fa-child"></i> <span data-translate="p3-tag">Моторна корекція · 3–18 р.</span></div>
                 <h3 data-translate="p3-name">Моторна корекція Стандарт</h3>
@@ -448,11 +430,13 @@
                     <span class="price-currency">₴</span>
                 </div>
                 <div class="pricing-features">
-                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p3-f1">4 місяці доступу до курсу</span></div>
-                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p3-f2">Відеозаняття для дітей 3–18 р.</span></div>
-                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p3-f3">Пояснення для батьків</span></div>
-                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p3-f4">Базовий план корекції</span></div>
-                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p3-f5">Доступ до групи підтримки</span></div>
+                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p3-f1">Первинна консультація Камененко А.О.</span></div>
+                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p3-f2">Доступ на 4 місяці</span></div>
+                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p3-f3">Відео-уроки з вправами</span></div>
+                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p3-f4">Контроль динаміки через місяць</span></div>
+                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p3-f5">Пасивна гімнастика, фітбол</span></div>
+                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p3-f6">Заборонені гаджети</span></div>
+                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p3-f7">Правила догляду та умов</span></div>
                 </div>
                 <a href="https://secure.wayforpay.com/button/b41a29f70d917" target="_blank" class="btn-pricing teal" data-translate="btn-buy">Придбати курс</a>
             </div>
@@ -467,12 +451,13 @@
                     <span class="price-currency">₴</span>
                 </div>
                 <div class="pricing-features">
-                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p4-f1">6 місяців доступу до курсу</span></div>
-                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p4-f2">Всі матеріали Стандарту +</span></div>
-                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p4-f3">Первинна онлайн-консультація</span></div>
-                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p4-f4">Індивідуальний план для дитини</span></div>
-                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p4-f5">Telegram-підтримка 6 місяців</span></div>
-                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p4-f6">Контрольний огляд після курсу</span></div>
+                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p4-f1">Первинна консультація Камененко А.О.</span></div>
+                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p4-f2">Доступ на 6 місяців</span></div>
+                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p4-f3">Відео-уроки з вправами</span></div>
+                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p4-f4">Постійний контроль динаміки</span></div>
+                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p4-f5">Зворотний зв'язок до результату</span></div>
+                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p4-f6">Пасивна гімнастика, фітбол</span></div>
+                    <div class="pricing-feature"><i class="fas fa-check-circle"></i><span data-translate="p4-f7">Особистий супровід</span></div>
                 </div>
                 <a href="https://secure.wayforpay.com/button/b5e8afffbd767" target="_blank" class="btn-pricing teal" data-translate="btn-buy">Придбати курс</a>
             </div>
@@ -636,7 +621,7 @@
 
 
 <script>
-(function(){
+window.T = (function(){
     const T = {
         uk:{
             'btn-book':'Записатись',
@@ -646,38 +631,38 @@
             'hero-sub':'Авторська методика Івана Газіна. Займайтесь вдома — результати як у клініці.',
             'hs-1':'Успішних результатів','hs-2':'Дітей пройшли курс','hs-3':'Років досвіду','hs-4':'Підтримка у чаті',
             'fw-label':'Для кого','fw-title':'Кому підійде курс','fw-sub':'Програми розроблені для різних вікових груп та типів порушень',
-            'fw1-title':'Діти 3–18 років','fw1-text':'Вальгусна деформація стоп і колін, сколіоз, плоскостопість, порушення постави. Ігрові вправи адаптовані під вік.',
+            'fw1-title':'Діти та дорослі 2-60 років','fw1-text':'Вальгусна деформація стоп і колін, сколіоз, плоскостопість, порушення постави. Ігрові вправи адаптовані під вік.',
             'fw2-title':'Дорослі з болями у спині','fw2-text':'Хронічні болі, міжхребцеві грижі, протрузії. Індивідуальна програма без операцій та таблеток.',
             'fw3-title':'Ті, хто не може приїхати','fw3-text':'Мешкаєте за кордоном або в іншому місті? Онлайн-формат дає ті самі результати.',
             'pr-label':'Тарифи','pr-title':'Оберіть свій курс','pr-sub':'Чотири програми для різних потреб та бюджетів',
-            'p1-tag':'Індивідуально · Дорослі','p1-name':'Індивідуальний Стандарт','p1-target':'Для дорослих із порушеннями постави та ОРА',
-            'p1-f1':'12 індивідуальних занять з Іваном','p1-f2':'5 місяців доступу до матеріалів','p1-f3':'Відео-аналіз постави та стоп','p1-f4':'Індивідуальна програма вправ','p1-f5':'Telegram-чат підтримки 5 місяців','p1-f6':'Повторний огляд після курсу',
+            'p1-tag':'Індивідуально · Діти та дорослі','p1-name':'Індивідуальний Стандарт','p1-target':'Для дітей та дорослих',
+            'p1-f1':'12 індивідуальних занять','p1-f2':'5 місяців доступу до матеріалів','p1-f3':'Первинна онлайн-консультація','p1-f4':'Індивідуальна програма вправ','p1-f5':'Telegram-чат підтримки','p1-f6':'Повторна діагностика через 3 місяці','p1-f7':'Індивідуальний план терапії',
             'p2-tag':'Індивідуально · Преміум','p2-name':'Індивідуальний Преміум','p2-target':'Максимальний супровід для складних випадків',
-            'p2-f1':'16 індивідуальних занять з Іваном','p2-f2':'9 місяців доступу до матеріалів','p2-f3':'Відео-аналіз + розбір рентгену','p2-f4':'Розширена індивідуальна програма','p2-f5':'Telegram-чат підтримки 9 місяців','p2-f6':'Контрольний огляд кожні 3 місяці','p2-f7':'Розбір рентгену через 6 місяців',
+            'p2-f1':'16 індивідуальних занять','p2-f2':'9 місяців доступу до матеріалів','p2-f3':'Первинна онлайн-консультація','p2-f4':'Індивідуальна програма вправ','p2-f5':'Telegram-чат підтримки','p2-f6':'Повторна діагностика через 3 місяці','p2-f7':'Індивідуальний план терапії',
             'p3-tag':'Моторна корекція · 3–18 р.','p3-name':'Моторна корекція Стандарт','p3-target':'Для дітей 3–18 років: вальгус, сколіоз, плоскостопість',
-            'p3-f1':'4 місяці доступу до курсу','p3-f2':'Відеозаняття для дітей 3–18 р.','p3-f3':'Пояснення для батьків','p3-f4':'Базовий план корекції','p3-f5':'Доступ до групи підтримки',
+            'p3-f1':'Первинна консультація Камененко А.О.','p3-f2':'Доступ на 4 місяці','p3-f3':'Відео-уроки з вправами','p3-f4':'Контроль динаміки через місяць','p3-f5':'Пасивна гімнастика, фітбол','p3-f6':'Заборонені гаджети','p3-f7':'Правила догляду та умов',
             'p4-tag':'Моторна корекція · Преміум','p4-name':'Моторна корекція Преміум','p4-target':'Розширений курс для дітей з індивідуальним супроводом',
-            'p4-f1':'6 місяців доступу до курсу','p4-f2':'Всі матеріали Стандарту +','p4-f3':'Первинна онлайн-консультація','p4-f4':'Індивідуальний план для дитини','p4-f5':'Telegram-підтримка 6 місяців','p4-f6':'Контрольний огляд після курсу',
+            'p4-f1':'Первинна консультація Камененко А.О.','p4-f2':'Доступ на 6 місяців','p4-f3':'Відео-уроки з вправами','p4-f4':'Постійний контроль динаміки','p4-f5':'Зворотний зв\'язок до результату','p4-f6':'Пасивна гімнастика, фітбол','p4-f7':'Особистий супровід',
             'btn-buy':'Придбати курс',
             'mth-label':'Методологія','mth-title':'Як проходить онлайн курс','mth-sub':'Чотири послідовні кроки до результату',
-            'ms1-title':'Первинна діагностика','ms1-text':'Відеодіагностика постави, стоп та рухових функцій. Складання детальної анкети.',
+            'ms1-title':'Первинна діагностика','ms1-text':'Відеодіагностика постави, стоп та рухових функцій. Складання детальної анкети пацієнта.',
             'ms2-title':'Індивідуальний план','ms2-text':'Іван особисто розробляє програму вправ з урахуванням типу порушення та віку.',
             'ms3-title':'Онлайн-заняття','ms3-text':'Відеосесії з Іваном або за відеозаписами. Контроль техніки виконання.',
             'ms4-title':'Контроль результатів','ms4-text':'Регулярні повторні огляди, розбір рентгену, коригування програми.',
             'tr1':'Успішних результатів','tr2':'Дітей пройшли курс','tr3':'Років досвіду','tr4':'Підтримка у Telegram',
             'faq-label':'FAQ','faq-title':'Поширені запитання',
-            'faq1-q':'Як відбувається онлайн-заняття?','faq1-a':'Заняття проходить через відеодзвінок (Zoom, Telegram або Viber). Іван у режимі реального часу показує вправи та контролює техніку. Тривалість — 45–60 хвилин.',
-            'faq2-q':'З якого віку можна починати займатись?','faq2-a':'Курс «Моторна корекція» розроблений для дітей від 3 років. Для малят 3–6 років заняття у форматі гри. Дорослі курси — без вікових обмежень.',
-            'faq3-q':'Коли з\'являться перші результати?','faq3-a':'Перші візуальні зміни помітні вже після 10–14 занять. Значний прогрес фіксується на рентгені через 3–6 місяців.',
-            'faq4-q':'Чи потрібне спеціальне обладнання?','faq4-a':'Мінімальний набір: йога-мат та еспандер. Для окремих вправ може знадобитись невелика гімнастична паличка або м\'яч.',
-            'faq5-q':'Чи можна поєднувати з іншими видами корекції?','faq5-a':'Так. Курс чудово поєднується з масажем, кінезіотейпуванням та іншими фізіотерапевтичними процедурами.',
-            'faq6-q':'Що відбувається після закінчення курсу?','faq6-a':'Проводиться контрольний огляд та аналіз результатів. За необхідності рекомендується продовження або підтримувальна програма.',
-            'cta-title':'Почніть зміни вже сьогодні','cta-sub':'Запишіться на первинну діагностику — і отримайте індивідуальний план вже протягом 24 годин.','cta-btn':'Записатись на діагностику',
-            'footer-desc':'Центр відновлювальної медицини, фізичної терапії та нутриціології. Допомога дітям і дорослим з 2016 року.',
+            'faq1-q':'Як відбувається онлайн-заняття?','faq1-a':'Заняття проходить через відеодзвінок (Zoom, Telegram або Viber). Іван у режимі реального часу показує вправи, контролює техніку виконання та дає корективи. Тривалість — 45–60 хвилин.',
+            'faq2-q':'З якого віку можна починати займатись?','faq2-a':'Курс «Моторна корекція» розроблений для дітей від 3 років. Для малят 3–6 років заняття проводяться у форматі гри. Дорослі курси — без вікових обмежень.',
+            'faq3-q':'Коли з\'являються перші результати?','faq3-a':'Перші візуальні зміни помітні вже після 10–14 занять при регулярних тренуваннях. Значний прогрес фіксується на рентгені через 3–6 місяців.',
+            'faq4-q':'Чи потрібне спеціальне обладнання?','faq4-a':'Мінімальний набір: йога-мат та еспандер. Для окремих вправ може знадобитись невелика гімнастична паличка або невеликий м\'яч.',
+            'faq5-q':'Чи можна поєднувати з іншими видами лікування?','faq5-a':'Так. Курс чудово поєднується з масажем, кінезіотейпуванням та іншими фізіотерапевтичними процедурами.',
+            'faq6-q':'Що відбувається після закінчення курсу?','faq6-a':'Після завершення курсу проводиться контрольний огляд та аналіз результатів. За необхідності Іван рекомендує продовження або підтримувальну програму.',
+            'cta-title':'Почніть зміни вже сьогодні','cta-sub':'Запишіться на первинну діагностику — і отримайте індивідуальний план лікування вже протягом 24 годин.','cta-btn':'Записатись на діагностику',
+            'footer-desc':'Центр відновлювальної медицини, фізичної терапії та нутриціології. Професійна допомога дітям і дорослим з 2016 року.',
             'footer-nav-title':'Навігація','footer-contacts-title':'Контакти',
             'footer-address':'вул. Чернишевського, 26, Ізмаїл, Одеська область, 68601',
-            'footer-hours':'Пн–Пт: 9:00–20:00',
-            'footer-copy':'© 2026 БЕРЕГИНЯ. Всі права захищені.',
+            'footer-hours':'Пн–Пт: 9:00–20:00, Сб: 10:00–18:00',
+            'footer-copy':' 2026 БЕРЕГИНЯ. Всі права захищені.',
             'footer-offer':'Договір оферти','footer-privacy':'Політика конфіденційності',
             langUk:'Українська',langRu:'Русский'
         },
@@ -689,18 +674,17 @@
             'hero-sub':'Авторская методика Ивана Газина. Занимайтесь дома — результаты как в клинике.',
             'hs-1':'Успешных результатов','hs-2':'Детей прошли курс','hs-3':'Лет опыта','hs-4':'Поддержка в чате',
             'fw-label':'Для кого','fw-title':'Кому подойдёт курс','fw-sub':'Программы разработаны для разных возрастных групп и типов нарушений',
-            'fw1-title':'Дети 3–18 лет','fw1-text':'Вальгусная деформация стоп и колен, сколиоз, плоскостопие, нарушения осанки. Игровые упражнения адаптированы по возрасту.',
+            'fw1-title':'Дети и взрослые от 2-60 лет','fw1-text':'Вальгусная деформация стоп и колен, сколиоз, плоскостопие, нарушения осанки. Игровые упражнения адаптированы по возрасту.',
             'fw2-title':'Взрослые с болями в спине','fw2-text':'Хронические боли, межпозвонковые грыжи, протрузии. Индивидуальная программа без операций и таблеток.',
             'fw3-title':'Те, кто не может приехать','fw3-text':'Живёте за рубежом или в другом городе? Онлайн-формат даёт те же результаты.',
             'pr-label':'Тарифы','pr-title':'Выберите свой курс','pr-sub':'Четыре программы для разных потребностей и бюджетов',
-            'p1-tag':'Индивидуально · Взрослые','p1-name':'Индивидуальный Стандарт','p1-target':'Для взрослых с нарушениями осанки и ОДА',
-            'p1-f1':'12 индивидуальных занятий с Иваном','p1-f2':'5 месяцев доступа к материалам','p1-f3':'Видео-анализ осанки и стоп','p1-f4':'Индивидуальная программа упражнений','p1-f5':'Telegram-чат поддержки 5 месяцев','p1-f6':'Повторный осмотр после курса',
+            'p1-tag':'Индивидуально · Дети и взрослые','p1-name':'Индивидуальный Стандарт','p1-target':'Для взрослых с нарушениями осанки и ОДА',
+            'p1-f1':'12 индивидуальных занятий','p1-f2':'5 месяцев доступа к материалам','p1-f3':'Первая онлайн-консультация','p1-f4':'Индивидуальная программа упражнений','p1-f5':'Telegram-чат поддержки','p1-f6':'Повторная диагностика через 3 месяца','p1-f7':'Индивидуальный план терапии',
             'p2-tag':'Индивидуально · Премиум','p2-name':'Индивидуальный Премиум','p2-target':'Максимальное сопровождение для сложных случаев',
-            'p2-f1':'16 индивидуальных занятий с Иваном','p2-f2':'9 месяцев доступа к материалам','p2-f3':'Видео-анализ + разбор рентгена','p2-f4':'Расширенная индивидуальная программа','p2-f5':'Telegram-чат поддержки 9 месяцев','p2-f6':'Контрольный осмотр каждые 3 месяца','p2-f7':'Разбор рентгена через 6 месяцев',
-            'p3-tag':'Моторная коррекция · 3–18 л.','p3-name':'Моторная коррекция Стандарт','p3-target':'Для детей 3–18 лет: вальгус, сколиоз, плоскостопие',
-            'p3-f1':'4 месяца доступа к курсу','p3-f2':'Видеозанятия для детей 3–18 л.','p3-f3':'Пояснения для родителей','p3-f4':'Базовый план коррекции','p3-f5':'Доступ к группе поддержки',
+            'p2-f1':'16 индивидуальных занятий','p2-f2':'9 месяцев доступа к материалам','p2-f3':'Первая онлайн-консультация','p2-f4':'Индивидуальная программа упражнений','p2-f5':'Telegram-чат поддержки','p2-f6':'Повторная диагностика через 3 месяца','p2-f7':'Индивидуальный план терапии','p3-name':'Моторная коррекция Стандарт','p3-target':'Для детей 3–18 лет: вальгус, сколиоз, плоскостопие',
+            'p3-f1':'Первая консультация Камененко А.О.','p3-f2':'Доступ на 4 месяца','p3-f3':'Видео-уроки с упражнениями','p3-f4':'Контроль динамики через месяц','p3-f5':'Пассивная гимнастика, фитбол','p3-f6':'Запрещенные гаджеты','p3-f7':'Правила ухода и условия',
             'p4-tag':'Моторная коррекция · Премиум','p4-name':'Моторная коррекция Премиум','p4-target':'Расширенный курс для детей с индивидуальным сопровождением',
-            'p4-f1':'6 месяцев доступа к курсу','p4-f2':'Все материалы Стандарта +','p4-f3':'Первичная онлайн-консультация','p4-f4':'Индивидуальный план для ребёнка','p4-f5':'Telegram-поддержка 6 месяцев','p4-f6':'Контрольный осмотр после курса',
+            'p4-f1':'Первая консультация Камененко А.О.','p4-f2':'Доступ на 6 месяцев','p4-f3':'Видео-уроки с упражнениями','p4-f4':'Постоянный контроль динамики','p4-f5':'Обратная связь до результата','p4-f6':'Пассивная гимнастика, фитбол','p4-f7':'Личное сопровождение',
             'btn-buy':'Купить курс',
             'mth-label':'Методология','mth-title':'Как проходит онлайн курс','mth-sub':'Четыре последовательных шага к результату',
             'ms1-title':'Первичная диагностика','ms1-text':'Видеодиагностика осанки, стоп и двигательных функций. Составление анкеты пациента.',
