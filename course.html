@@ -170,7 +170,8 @@
     .pricing-card { border:1px solid var(--border); border-radius:var(--radius-xl); padding:36px; background:var(--white); position:relative; transition:transform .3s var(--ease),box-shadow .3s var(--ease); display:flex; flex-direction:column; }
     .pricing-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-lg); }
     .pricing-card.featured { border-color:var(--blue); background:linear-gradient(135deg,#f0f6ff 0%,#e8f1fc 100%); }
-    .pricing-card.featured::before { content:'ПОПУЛЯРНИЙ'; position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:var(--blue); color:#fff; font-family:'Montserrat',sans-serif; font-size:.62rem; font-weight:800; letter-spacing:.15em; padding:.35rem 1rem; border-radius:var(--radius-pill); white-space:nowrap; }
+    .pricing-card.featured::before { content:''; position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:var(--blue); color:#fff; font-family:'Montserrat',sans-serif; font-size:.62rem; font-weight:800; letter-spacing:.15em; padding:.35rem 1rem; border-radius:var(--radius-pill); white-space:nowrap; }
+    .popular-badge { position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:var(--blue); color:#fff; font-family:'Montserrat',sans-serif; font-size:.62rem; font-weight:800; letter-spacing:.15em; padding:.35rem 1rem; border-radius:var(--radius-pill); white-space:nowrap; z-index:2; }
     .pricing-card.premium-featured { border-color:var(--teal); }
     .pricing-tag { display:inline-flex; align-items:center; gap:6px; padding:.3rem .75rem; border-radius:var(--radius-pill); font-size:.68rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; background:var(--blue-light); color:var(--blue); margin-bottom:1rem; }
     .pricing-card.premium-featured .pricing-tag { background:#e6faf6; color:#0d9a76; }
@@ -399,9 +400,10 @@
 
             <!-- Individual Standard -->
             <div class="pricing-card featured reveal">
-                <div class="pricing-tag"><i class="fas fa-user"></i> <span data-translate="p1-tag">Індивідуально · Дорослі</span></div>
+                <div class="popular-badge" data-translate="popular-badge">ПОПУЛЯРНИЙ</div>
+                <div class="pricing-tag"><i class="fas fa-user"></i> <span data-translate="p1-tag">Індивідуально · Діти та дорослі</span></div>
                 <h3 data-translate="p1-name">Індивідуальний Стандарт</h3>
-                <p class="target" data-translate="p1-target">Для дорослих із порушеннями постави та ОРА</p>
+                <p class="target" data-translate="p1-target">Для дітей та дорослих</p>
                 <div class="price-block">
                     <span class="price-main">14 900</span>
                     <span class="price-currency">₴</span>
@@ -654,6 +656,7 @@
     const T = {
         uk:{
             'btn-book':'Записатись',
+            'popular-badge':'ПОПУЛЯРНИЙ',
             'nav-home':'Іван Газін','nav-course':'Онлайн-курс','nav-reviews':'Відгуки',
             'hero-badge':'Онлайн-курс',
             'hero-title':'Корекція постави та вальгусу онлайн',
@@ -664,7 +667,7 @@
             'fw2-title':'Дорослі з болями у спині','fw2-text':'Хронічні болі, міжхребцеві грижі, протрузії. Індивідуальна програма без операцій та таблеток.',
             'fw3-title':'Ті, хто не може приїхати','fw3-text':'Мешкаєте за кордоном або в іншому місті? Онлайн-формат дає ті самі результати.',
             'pr-label':'Тарифи','pr-title':'Оберіть свій курс','pr-sub':'Чотири програми для різних потреб та бюджетів',
-            'p1-tag':'Індивідуально · Дорослі','p1-name':'Індивідуальний Стандарт','p1-target':'Для дорослих із порушеннями постави та ОРА',
+            'p1-tag':'Індивідуально · Діти та дорослі','p1-name':'Індивідуальний Стандарт','p1-target':'Для дітей та дорослих',
             'p1-f1':'12 індивідуальних занять','p1-f2':'5 місяців доступу до матеріалів','p1-f3':'Первинна онлайн-консультація','p1-f4':'Індивідуальна програма','p1-f5':'Telegram-чат підтримки','p1-f6':'Огляд диманіки кожні 2-3 місяці','p1-f7':'Розбір рентгену через 6 місяців','p1-f8':'Коригування програми продовження занять після базового курсу',
             'p2-tag':'Індивідуально · Преміум','p2-name':'Індивідуальний Преміум','p2-target':'Максимальний супровід для складних випадків',
             'p2-f1':'16 індивідуальних занять','p2-f2':'9 місяців доступу до матеріалів','p2-f3':'Первинна онлайн-консультація','p2-f4':'Індивідуальна програма','p2-f5':'Telegram-чат підтримки','p2-f6':'Огляд динаміки кожні 2-3 місяці','p2-f7':'Розбір рентгену через 6 місяців','p2-f8':'Коригування програми продовження занять після базового курсу',
@@ -700,6 +703,7 @@
         },
         ru:{
             'btn-book':'Записаться',
+            'popular-badge':'ПОПУЛЯРНЫЙ',
             'nav-home':'Иван Газин','nav-course':'Онлайн-курс','nav-reviews':'Отзывы',
             'hero-badge':'Онлайн-курс',
             'hero-title':'Коррекция осанки и вальгуса онлайн',
@@ -710,11 +714,11 @@
             'fw2-title':'Взрослые с болями в спине','fw2-text':'Хронические боли, межпозвонковые грыжи, протрузии. Индивидуальная программа без операций и таблеток.',
             'fw3-title':'Те, кто не может приехать','fw3-text':'Живёте за рубежом или в другом городе? Онлайн-формат даёт те же результаты.',
             'pr-label':'Тарифы','pr-title':'Выберите свой курс','pr-sub':'Четыре программы для разных потребностей и бюджетов',
-            'p1-tag':'Индивидуально · Взрослые','p1-name':'Индивидуальный Стандарт','p1-target':'Для взрослых с нарушениями осанки и ОДА',
+            'p1-tag':'Индивидуально · Дети и взрослые','p1-name':'Индивидуальный Стандарт','p1-target':'Для детей и взрослых',
             'p1-f1':'12 индивидуальных занятий с Иваном','p1-f2':'5 месяцев доступа к материалам','p1-f3':'Видео-анализ осанки и стоп','p1-f4':'Индивидуальная программа','p1-f5':'Telegram-чат поддержки','p1-f6':'Повторный осмотр после курса','p1-f7':'Telegram-чат поддержки','p1-f8':'Повторный осмотр после курса',
             'p2-tag':'Индивидуально · Премиум','p2-name':'Индивидуальный Премиум','p2-target':'Максимальное сопровождение для сложных случаев',
             'p2-f1':'16 индивидуальных занятий с Иваном','p2-f2':'9 месяцев доступа к материалам','p2-f3':'Видео-анализ + разбор рентгена','p2-f4':'Расширенная индивидуальная программа','p2-f5':'Telegram-чат поддержки','p2-f6':'Контрольный осмотр каждые 3 месяца','p2-f7':'Разбор рентгена через 6 месяцев','p2-f8':'Корректировка программы продолжения занятий после базового курса',
-            'p3-tag':'Моторная коррекция · 3–18 л.','p3-name':'Моторная коррекция Стандарт','p3-target':'Для детей 3–18 лет: вальгус, сколиоз, плоскостопие',
+            'p3-tag':'Моторная коррекция · 1-18 месяцев.','p3-name':'Моторная коррекция Стандарт','p3-target':'Для детей 1-18 месяцев: вальгус, сколиоз, плоскостопие',
             'p3-f1':'4 месяца доступа к курсу','p3-f2':'Видео-уроки','p3-f3':'Пояснения для родителей','p3-f4':'Базовый план коррекции',
             'p4-tag':'Моторная коррекция · Премиум','p4-name':'Моторная коррекция Премиум','p4-target':'Расширенный курс для детей с индивидуальным сопровождением',
             'p4-f1':'6 месяцев доступа к курсу','p4-f2':'Все материалы Стандарта +','p4-f3':'Первичная онлайн-консультация','p4-f4':'Индивидуальный план для ребёнка','p4-f5':'Разбор рентгена','p4-f6':'Корректировка программы продолжения занятий после базового курса',
