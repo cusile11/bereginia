@@ -200,6 +200,9 @@
         <nav>
             <ul class="nav-menu">
                 <li><a href="index.html" data-translate="nav-home">Іван Газін</a></li>
+                <li><a href="skolioz.html">Лікування сколіозу</a></li>
+                <li><a href="valgus.html">Вальгус стоп</a></li>
+                <li><a href="onlajn-konsultaciya.html">Онлайн-консультація</a></li>
                 <li><a href="course.html" data-translate="nav-course">Онлайн-курс</a></li>
                 <li><a href="reviews.html" class="active" data-translate="nav-reviews">Відгуки</a></li>
             </ul>
@@ -226,6 +229,9 @@
         <div class="mobile-menu-content">
             <ul class="mobile-nav">
                 <li><a href="index.html" data-translate="nav-home">Іван Газін</a></li>
+                <li><a href="skolioz.html">Лікування сколіозу</a></li>
+                <li><a href="valgus.html">Вальгус стоп</a></li>
+                <li><a href="onlajn-konsultaciya.html">Онлайн-консультація</a></li>
                 <li><a href="course.html" data-translate="nav-course">Онлайн-курс</a></li>
                 <li><a href="reviews.html" class="active" data-translate="nav-reviews">Відгуки</a></li>
             </ul>
@@ -485,6 +491,7 @@
             <div class="footer-contact">
                 <h4 data-translate="footer-contacts-title">Контакти</h4>
                 <p><i class="fas fa-map-marker-alt"></i><span data-translate="footer-address">вул. Чернишевського, 26, Ізмаїл, Одеська область, 68601</span></p>
+                <p><i class="fas fa-map-marker-alt"></i><span data-translate="footer-address2">просп. Миру, 24Б, Ізмаїл, Одеська область, 68604</span></p>
                 <p><i class="fas fa-phone"></i><span>+380 67 484 93 08</span></p>
                 <p><i class="fas fa-envelope"></i><span>naturalmedical96@gmail.com</span></p>
                 <p><i class="fas fa-clock"></i><span data-translate="footer-hours">Пн–Пт: 9:00–20:00, Сб: 10:00–18:00</span></p>
@@ -530,6 +537,7 @@
             'footer-desc':'Центр відновлювальної медицини, фізичної терапії та нутриціології. Професійна допомога дітям і дорослим з 2016 року.',
             'footer-nav-title':'Навігація','footer-contacts-title':'Контакти',
             'footer-address':'вул. Чернишевського, 26, Ізмаїл, Одеська область, 68601',
+            'footer-address2':'просп. Миру, 24Б, Ізмаїл, Одеська область, 68604',
             'footer-hours':'Пн–Пт: 9:00–20:00',
             'footer-copy':'© 2026 БЕРЕГИНЯ. Всі права захищені.',
             'footer-offer':'Договір оферти','footer-privacy':'Політика конфіденційності',
@@ -561,6 +569,7 @@
             'footer-desc':'Центр восстановительной медицины, физической терапии и нутрициологии. Профессиональная помощь детям и взрослым с 2016 года.',
             'footer-nav-title':'Навигация','footer-contacts-title':'Контакты',
             'footer-address':'ул. Чернышевского, 26, Измаил, Одесская область, 68601',
+            'footer-address2':'просп. Мира, 24Б, Измаил, Одесская область, 68604',
             'footer-hours':'Пн–Пт: 9:00–20:00',
             'footer-copy':'© 2026 БЕРЕГИНЯ. Все права защищены.',
             'footer-offer':'Договор оферты','footer-privacy':'Политика конфиденциальности',
@@ -575,7 +584,7 @@
         localStorage.setItem('selectedLanguage', l);
         document.querySelectorAll('[data-translate]').forEach(el => {
             const k = el.getAttribute('data-translate');
-            if (T[l] && T[l][k] !== undefined) el.textContent = T[l][k];
+            if (T[l] && T[l][k] !== undefined) el.innerHTML = T[l][k];
         });
         document.querySelectorAll('.lang-toggle-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === l));
         document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === l));
