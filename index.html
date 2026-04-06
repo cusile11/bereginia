@@ -1257,6 +1257,34 @@
         margin:0 auto 1rem;
     }
     .form-header h3 { font-size:1.3rem; color:var(--ink); margin-bottom:.3rem; }
+    .v2-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: #e8f1fc;
+        color: #003d82;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 5px 12px;
+        border-radius: 999px;
+        margin-bottom: 12px;
+    }
+    .v2-pill-dot {
+        width: 6px;
+        height: 6px;
+        background: #1abc9c;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+    .v2-title {
+        font-size: 1.55rem;
+        font-weight: 800;
+        color: var(--ink);
+        margin: 0;
+        line-height: 1.2;
+    }
     .form-subtitle { font-size:.88rem; color:var(--muted); }
 
     .form-features {
@@ -1529,6 +1557,7 @@
         .diagnostics-steps { grid-template-columns:1fr 1fr; }
         .diagnostics-steps .step::after { display:none; }
         .diagnostics-features { grid-template-columns:repeat(2,1fr); }
+        #postureCanvas, #postureVideo { display:none; }
         .appointment-container { grid-template-columns:1fr; }
         .diseases-list { grid-template-columns:1fr; }
         .specialties-grid { grid-template-columns:1fr; }
@@ -1576,6 +1605,7 @@
             uk: {
                 'footer-nav-home':'Іван Газін', 'footer-nav-course':'Онлайн-курс', 'footer-nav-reviews':'Відгуки',
                 'footer-address':'вул. Чернишевського, 26, Ізмаїл, Одеська область, 68601',
+                'footer-address2':'просп. Миру, 24Б, Ізмаїл, Одеська область, 68604',
                 'footer-phone':'+380 67 484 93 08',
                 'footer-email':'naturalmedical96@gmail.com',
                 'footer-hours':'Пн–Пт: 9:00–20:00',
@@ -1712,6 +1742,7 @@
                 navHome:'Иван Газин', navCourse:'Онлайн-курс', navReviews:'Отзывы',
                 'footer-nav-home':'Иван Газин', 'footer-nav-course':'Онлайн-курс', 'footer-nav-reviews':'Отзывы',
                 'footer-address':'ул. Чернышевского, 26, Измаил, Одесская область, 68601',
+                'footer-address2':'просп. Мира, 24Б, Измаил, Одесская область, 68604',
                 'footer-phone':'+380 67 484 93 08',
                 'footer-email':'naturalmedical96@gmail.com',
                 'footer-hours':'Пн–Пт: 9:00–20:00',
@@ -2246,7 +2277,8 @@
             <div class="appointment-form reveal-right">
                 <div class="form-header">
                     <div class="form-icon"><i class="fas fa-calendar-plus"></i></div>
-                    <h3 data-translate="appointment-form-title">Запис на діагностику</h3>
+                    <div class="v2-pill"><span class="v2-pill-dot"></span>Консультація онлайн</div>
+                    <h3 class="v2-title" data-translate="appointment-form-title">Запис на діагностику</h3>
                     <p class="form-subtitle" data-translate="appointment-form-subtitle">Онлайн-консультація з Іваном Газіним</p>
                 </div>
 
@@ -2410,6 +2442,7 @@
             <div class="footer-contact">
                 <h4 data-translate="footer-contacts-title">Контакти</h4>
                 <p><i class="fas fa-map-marker-alt"></i><span data-translate="footer-address">вул. Чернишевського, 26, Ізмаїл, Одеська область, 68601</span></p>
+                <p><i class="fas fa-map-marker-alt"></i><span data-translate="footer-address2">просп. Миру, 24Б, Ізмаїл, Одеська область, 68604</span></p>
                 <p><i class="fas fa-phone"></i><span data-translate="footer-phone">+380 67 484 93 08</span></p>
                 <p><i class="fas fa-envelope"></i><span data-translate="footer-email">naturalmedical96@gmail.com</span></p>
                 <p><i class="fas fa-clock"></i><span data-translate="footer-hours">Пн–Пт: 9:00–20:00, Сб: 10:00–18:00</span></p>
